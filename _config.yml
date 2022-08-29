@@ -182,6 +182,9 @@ plugins:
   - jekyll-twitter-plugin
   - jemoji
 
+whitelist:
+  - jekyll-twitter-plugin
+  
 # Sitemap settings
 defaults:
   - scope:
