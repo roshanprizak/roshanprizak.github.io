@@ -80,7 +80,7 @@ blockquote { background: var(--global-bg-color); border-left: 2px solid var(--gl
 
 .profile .address p { display: inline-block; margin: 0; }
 
-@media (min-width: 576px) { .profile { width: 30%; } .profile .address p { display: block; } }
+@media (min-width: 576px) { .profile { width: 200px; } .profile .address p { display: block; } }
 
 .post-description { margin-bottom: 2rem; font-size: 0.875rem; }
 
@@ -172,23 +172,25 @@ footer.sticky-bottom { border-top: 1px solid var(--global-divider-color); paddin
 
 .header-bar h1 { color: var(--global-theme-color); font-size: 5rem; }
 
-.tag-list { border-bottom: 1px solid var(--global-divider-color); text-align: center; padding-top: 1rem; }
+.tag-list { text-align: left; padding-top: 0rem; }
 
 .tag-list ul { justify-content: center; display: flow-root; }
 
-.tag-list ul p, .tag-list ul li { list-style: none; display: inline-block; padding: 1rem 0.5rem; color: var(--global-text-color-light); }
+.tag-list ul p, .tag-list ul li { list-style: none; display: inline-block; padding: 0rem 0rem; color: var(--global-text-color-light); }
 
 .post-list { margin: 0; margin-bottom: 40px; padding: 0; }
 
-.post-list li { border-bottom: 1px solid var(--global-divider-color); list-style: none; padding-top: 2rem; padding-bottom: 2rem; }
+.post-list li { list-style: none; padding-top: 0.3rem; padding-bottom: 0rem; }
 
 .post-list li .post-meta { color: var(--global-text-color-light); font-size: 0.875rem; margin-bottom: 0; }
 
-.post-list li .post-tags { color: var(--global-text-color-light); font-size: 0.875rem; padding-top: 0.25rem; padding-bottom: 0; }
+.post-list li .post-tags { color: var(--global-text-color-light); font-size: 0.875rem; padding-top: 0; padding-bottom: 0; }
 
 .post-list li a { color: var(--global-text-color); text-decoration: none; }
 
 .post-list li a:hover { color: var(--global-theme-color); }
+
+.post-list li .container { display: flex; align-items: self; }
 
 .pagination .page-item .page-link { color: var(--global-text-color); }
 
