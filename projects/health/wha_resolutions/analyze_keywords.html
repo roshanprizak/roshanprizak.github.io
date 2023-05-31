@@ -303,11 +303,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>In this project, I sought to</p>
 <ol type="a">
-<li>create a dataset of WHA resolutions over the years,</li>
-<li>identify topics covered by WHA resolutions over the years, and track their evolution,</li>
-<li>uncover relationships between WHA resolutions and visualize them,</li>
-<li>analyze how different countries have contributed to WHO’s budget over the years, and</li>
-<li>identify new questions of interest concerning this dataset and other related issues to take up as future projects.</li>
+<li>create a <strong>dataset of WHA resolutions</strong> over the years,</li>
+<li><strong>identify topics</strong> covered by WHA resolutions, and <strong>track their time evolution</strong>,</li>
+<li><strong>uncover relationships</strong> between WHA resolutions and <strong>visualize</strong> them as a <strong>network</strong>,</li>
+<li>analyze how different <strong>countries</strong> have <strong>contributed to WHO’s budget</strong> over the years, and</li>
+<li>identify <strong>new questions of interest</strong> concerning this dataset and other related issues to take up as <strong>future projects</strong>.</li>
 </ol>
 </section>
 <section id="create-a-dataset-of-wha-resolutions" class="level2">
@@ -326,8 +326,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Having done these steps, we end up with a list of text files (one per resolution) for each WHA session. We can read these into Python, and see all the information (resolution number of the form <code>WHA{X}.{Y}</code>, title of the resolution, year of the session and the clean text of the resolution) of all the</p>
-<div class="cell" data-execution_count="165">
-<div class="cell-output cell-output-display" data-execution_count="165">
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
 
 <div>
 
@@ -425,12 +425,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Note that some of the words in the first session’s resolutions have been cut off at the beginning. There are indeed a few other resolutions where such unwanted errors and typos are present. A common type of typo is a missing space between words. However, these aren’t very common, so I leave them as they are.</p>
+<p>Note that some of the words in the first session’s resolutions have been cut off at the beginning. There are indeed a few other resolutions where such unwanted errors and typos are present. A common type of typo is a missing space between words. However, these aren’t very common, so I left them as they are.</p>
 </section>
 <section id="first-look-at-topics-and-their-time-evolution" class="level2">
 <h2 class="anchored" data-anchor-id="first-look-at-topics-and-their-time-evolution">First look at topics and their time evolution</h2>
-<p>To get a taste of the topics of WHA resolutions and their evolution over time, I chose a few topics of interest like “Sustainability”, “HIV”, “Climate Change”, “COVID-19” etc. and checked how often short phrases related to each of these topics is present in resolutions from different years.</p>
-<div class="cell" data-execution_count="167">
+<p>To get a taste of the topics of WHA resolutions and their evolution over time, I chose a few topics of interest like “Sustainability”, “HIV”, “Climate Change”, “COVID-19” etc. and checked how often short phrases related to each of these topics are present in resolutions from different years.</p>
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -576,10 +576,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="identification-of-topics-and-grouping-by-their-time-evolution" class="level2">
 <h2 class="anchored" data-anchor-id="identification-of-topics-and-grouping-by-their-time-evolution">Identification of topics and grouping by their time evolution</h2>
 <p>To uncover more topics covered by WHA resolutions, and use them to find relationships between WHA resolutions, I looked towards natural language processing and network analysis. I used TF-IDF vectorization to find keywords/topics for each resolution and built a network of WHA resolutions by comparing these identified keyword lists.</p>
-<p>I won’t go into many details behind the natural language processing pipeline and will only briefly summarize it. Each resolution is associated with two strings - <code>title</code> and <code>text</code>. For both of these strings, we perform usual NLP pre-processing steps like tokenization, removal of stop words, and additional text cleaning like removing special characters and numbers. Then, we also stemmize all the tokens (words) in these strings so that different words like “sustainability”, “sustainable”, “sustain”, “sustains”, “sustaining”, “sustained” are all reduced to a common form “sustain”. This collection of cleaned and stemmized documents (each resolution is a document) is called a corpus. We have two stemmized corpuses - <code>corpus_title</code> and <code>corpus_text</code>. For the following explanation, I’ll refer to <code>corpus_text</code> as the corpus, and we’ll only be using <code>corpus_text</code> in this study.</p>
-<p>So, the corpus is a collection of documents (resolutions), and each document is a collection of words (after having removed special characters, numbers and stop words which are commonly occuring English words like “the”, “a” etc.). For each word in the corpus, we can calculate its <code>document frequency</code>, which is the fraction of documents containing the word. For each pair of word and document, we can also calculate the <code>TF-IDF score</code>, a score that is a combination of term frequency and inverse document frequency. What is important to note is that TF-IDF score is intended to reflect how important a word is to a document.</p>
+<p>I won’t go into many details behind the natural language processing pipeline and will only briefly summarize it. Each resolution is associated with two strings - <code>title</code> and <code>text</code>. For both of these strings, I performed the usual NLP pre-processing steps like tokenization, removal of stop words, and additional text cleaning like removing special characters and numbers. Then, I also stemmized all the tokens (words) in these strings so that different words like “sustainability”, “sustainable”, “sustain”, “sustains”, “sustaining”, “sustained” were all reduced to a common form “sustain”. This collection of cleaned and stemmized documents (each resolution is a document) is called a corpus. We have two stemmized corpuses - <code>corpus_title</code> and <code>corpus_text</code>. For the following explanation, I’ll refer to <code>corpus_text</code> as the corpus, and I used only the <code>corpus_text</code> in this study.</p>
+<p>So, the corpus is a collection of documents (resolutions), and each document is a collection of words (after having removed special characters, numbers and stop words which are commonly occuring English words like “the”, “a” etc.). For each word in the corpus, I calculated its <code>document frequency</code>, which is the fraction of documents containing the word. For each pair of word and document, I also calculated the <code>TF-IDF score</code>, a score that is a combination of term frequency and inverse document frequency. What is important to note is that TF-IDF score is intended to reflect how important a word is to a document.</p>
 <p>First, we’ll check these two values for all the words in the corpus, and also check how the vocabulary size (no. of words) changes as we modify the minimum document frequency and maximum document frequency allowed.</p>
-<div class="cell" data-execution_count="169">
+<div class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -588,74 +588,71 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Words with a very high document frequency are probably those that aren’t very relevant to the specific topic of the resolution, and are just very often used in WHA resolutions. So, using a maximum allowed document frequency is a good way to exclude those words from further analysis. We’ll use a maximum document frequency of either 0.05 or 0.1. This means that we’ll exclude words that are present in more than 5% (around 150 resolutions) or than 10% (around 300 resolutions) of documents.</p>
-<p>We can also put a minimum document frequency, which will require words to be present in at least a specific number of resolutions, for example 5, 10 or 50. This will get rid of super-specific words, typos and other such errors. Putting these restrictions on what words we are willing to consider, we then proceed to calculate the TF-IDF score for each document-word pair. Remember, the TF-IDF score is intended to quantify a word’s importance in a document. Then, for each document, we select the top <code>n_w</code> words with the highest TF-IDF scores.</p>
-<p>We’ll count both single words (monograms) and two-word phrases (bigrams) - they will be called topics together. Using minimum document frequency as 50 resolutions, maximum document frequency as 5% (around 150 resolutions) and obtaining top <code>n_w = 10</code> topics from each document, we obtain a total of <strong>1136 unique topics</strong>.</p>
+<p>Words with a very high document frequency are probably those that aren’t very relevant to the specific topic of the resolution, and are just very often used in WHA resolutions. So, using a maximum allowed document frequency is a good way to exclude those words from further analysis. One can use a maximum document frequency of either 0.05 or 0.1. This means that one excludes words that are present in more than 5% (around 150 resolutions) or than 10% (around 300 resolutions) of documents.</p>
+<p>One can also put a minimum document frequency, which will require words to be present in at least a specific number of resolutions, for example 5, 10 or 50. This will get rid of super-specific words, typos and other such errors. Putting these restrictions on what words to consider, I then proceeded to calculate the TF-IDF score for each document-word pair. Remember, the TF-IDF score is intended to quantify a word’s importance in a document. Then, for each document, I selected the top <code>n_w</code> words with the highest TF-IDF scores.</p>
+<p>I counted both single words (monograms) and two-word phrases (bigrams) - they will be called <strong>topics</strong> together. Using minimum document frequency as 50 resolutions, maximum document frequency as 5% (around 150 resolutions) and obtaining top <code>n_w = 10</code> topics from each document, I obtained a total of <strong>1136 unique topics</strong>.</p>
 <p>Here are a few examples.</p>
-<div class="cell" data-execution_count="416">
+<div class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>WHA3.5: International certificates of vaccination
-Topics: certif, replac, convent, quarantin, inconform, travel, note recommend, smallpox, enter, sanitari
+<pre><code>WHA2.27: Insulin
+Topics: gener studi, advis, explor, manufactur, possibl, programm adopt
 
-WHA3.68: General promotion of health
-Topics: health report, approv programm, matern child, assembl approv, child health, promot health, budget estim, board director, mental health, propos programm
+WHA4.48: WHO seals
+Topics: supplement, ona, assembl suspens, toit, inconform, suggest, organ request, gener submit, fund health, gener implement
 
-WHA3.80: Level of expenditure for 1950
-Topics: expenditur, pend, assembl approv, creat, commend, exceed, author director
+WHA6.56: Special benefit for retiring Director-General
+Topics: staff pension, pension, save, work capit, capit fund, capit, contract, occur, budget estim, sum
 
-WHA9.48: Additional regulations of 23 May 1956 amending the International Sanitary Regulations with respect to the sanitary control of pilgrim traffic
-Topics: sanitari, text, day, hygien, mention, definit, forc, worker, tion, entri
+WHA15.34: Malaria eradication special account
+Topics: malaria, erad, special account, erad programm, cash, voluntari contribut, transit, programm request, laid, regularli
 
-WHA10.29: Criteria for provision of regional office accommodation
-Topics: perman, criteria, region offic, report thereon, expect, believ, anda, thereon, assembl plenari
+WHA23.18: Headquarters accommodation: report on financing
+Topics: headquart, real estat, estat, expens, real, sum, reflect, main, share, outcom
 
-WHA12.54: Smallpox eradication
-Topics: erad, smallpox, erad programm, accomplish, endem, demonstr, futur year, recommend health, asia, period year
+WHA29.37: Amendments to the rules of procedures of the World Health Assembly
+Topics: point, presid, deleg, rule procedur, associ member, add, appeal, aris, follow, statement
 
-WHA12.22: WHO partcipation in the Expanded Programme of Technical Assistance: programme aspects
-Topics: futur year, express concern, consolid, programm technic, programm request, expand programm, natur, inclus, gener programm
+WHA29.22: Report on the world health situation
+Topics: health situat, publish, content, analysi, programm work, gener programm, improv qualiti, subsequ health, report request, russian
 
-WHA20.28: Annual report of the United Nations Joint Staff Pension Board for 1965
-Topics: report year, staff pension, year report, pension, annual report
+WHA31.26: Health and medical assistance to Lebanon
+Topics: lebanon, creat, assist provid, injuri, assembl mind, mainten, previou resolut, organ health, peac secur, express appreci
 
-WHA22.29: Prevention of blindness
-Topics: government, organ concern, identif, injuri, systemat, assembl recogn, conduct, ordin, programm work, communic
+WHA32.22: Collaboration with the United Nations system: cooperation with newly independent and emerging States in Africa: liberation struggle in Southern Africa
+Topics: assembl implement, elect, health year, independ, resolut health
 
-WHA25.10: Scale of assessment for 1973
-Topics: percentag, arab, arab republ, yemen, ireland, costa, costa rica, ireland unit, kuwait, mauritiu
+WHA34.33: Collaboration with the United Nations system: cooperation with newly independent and emerging States in Africa: special programme of cooperation with the Republic of Chad
+Topics: chad, special programm, spirit, inclos, technic financi, health situat, programm request, invit member, possibl, region director
 
-WHA28.54: Prevention of blindness
-Topics: government nongovernment, programm report, connexion, countri develop, nation programm, introduc, develop nation, detect, suffer, assembl recogn
+WHA35.13: Transfer of the Regional Office for the Eastern Mediterranean
+Topics: advantag, gener prepar, effect implement, goal health, submit health, opinion, resolut ebr, maximum, believ, implement health
 
-WHA28.79: Special assistance to Cambodia, the Democratic Republic of Viet-Nam, and the Republic of South Viet-Nam
-Topics: viet, viet nam, nam, cambodia, democrat republ, democrat, south, larg, assist provid, mobil resourc
+WHA36.17: Real estate fund and Headquarters accommodation
+Topics: real estat, estat, real, headquart, main, region offic, construct, casual incom, casual, water
 
-WHA32.33: Respiratory diseases
-Topics: chronic, acut, control programm, high prioriti, element, consciou, global level, activ health, assembl inform, infant
+WHA46.12: Assessment of the Czech Republic and the Slovak Republic
+Topics: assess rate, nation scale, rate establish, latest, state concern, fix, replac, budgetari, share, scale assess
 
-WHA40.21: Health and medical assistance to Lebanon
-Topics: lebanon, bodi unit, government nongovernment, ministri health, relief, ministri, programm health, express appreci, government, expans
+WHA47.1: Rights and privileges of South Africa
+Topics: south africa, south, grant, activ health, democrat, elect, instal, anew, constitut health, fulfil
 
-WHA43.24: Report of the International Conference for the Tenth Revision of the International Classification of Diseases
-Topics: statist, mortal, code, list, morbid, concept, short, categori, core, infant
+WHA49.21: Collaboration within the United Nations system and with other intergovernmental organizations: strengthening of the coordination of emergency humanitarian assistance
+Topics: humanitarian, document rec, advocaci, disast, prepared, rec, draw attent, anew, assembl resolut, defin
 
-WHA64.17: Malaria
-Topics: malaria, combin, resist, millennium, manufactur, millennium develop, burden, endem, regulatori, elimin
+WHA54.9: Assessment of the Federal Republic of Yugoslavia
+Topics: yugoslavia, feder, scale assess, assembl establish, nation scale, latest, principl establish, confirm
 
-WHA65.21: Elimination of schistosomiasis
-Topics: transmiss, endem, elimin, congratul, tropic, campaign, analys, control programm, success, guidanc
+WHA71.12: Salaries of staff in ungraded positions and of the Director-General
+Topics: salari, net, annum, remuner, board regard, note recommend, gener establish, gener region, region director, post
 
-WHA66.10: Follow-up to the Political Declaration of the High-level Meeting of the General Assembly on the Prevention and Control of Non-communicable Diseases
-Topics: communic, communic diseas, control communic, tobacco, action plan, option, harm, intervent, cancer, physic
-
-WHA67.7: Disability
-Topics: disabl, action plan, health peopl, accomplish, region nation, bank, geneva health, gener implement, document document, submit report
+WHA75.10: Status of collection of assessed contributions, including Member States in arrears in the payment of their contributions to an extent that would justify invoking Article 7 of the Constitution of the World Health Organization
+Topics: constitut health, open, arrear, invok articl, justifi, invok, vote privileg, suspend, privileg, cameroon
 </code></pre>
 </div>
 </div>
 <section id="monograms-bigrams-topics-and-their-time-evolution" class="level3">
 <h3 class="anchored" data-anchor-id="monograms-bigrams-topics-and-their-time-evolution">Monograms + bigrams: topics and their time evolution</h3>
-<p>To visualize the found topics and their time evolution of occurance in WHA resolutions, we cluster the topics according to their time trajectory of counts and visualize as a heatmap. Topics with similar trajectories are clustered together for easier visualization.</p>
+<p>To visualize the found topics and their time evolution of occurance in WHA resolutions, I clustered the topics according to their time trajectory of counts and visualized it as a heatmap. Topics with similar trajectories are clustered together for easier visualization.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="ngram12_cluster_heatmap.png" class="lightbox" title="1-gram + 2-gram clustered heatmap of topics" data-gallery="quarto-lightbox-gallery-24"><img src="ngram12_cluster_heatmap.png" class="img-fluid figure-img"></a></p>
@@ -665,8 +662,11 @@ Topics: disabl, action plan, health peopl, accomplish, region nation, bank, gene
 </section>
 <section id="topic-trajectories-grouped-into-clusters" class="level3">
 <h3 class="anchored" data-anchor-id="topic-trajectories-grouped-into-clusters">Topic trajectories grouped into clusters</h3>
-<p>The heatmap contains a lot of topics but we see that we can group topics into groups according to the similarity in their time evolution. We perform this grouping quantitatively by employing <code>k-means clustering</code>. Taking a matrix of presence/absence of topics in resolutions each year, we perform k-means clustering for a range of number of clusters to find the optimal number of clusters (elbow point). Then we perform k-means clustering for the optimal number of clusters (32), we visualize the time trajectories of each of these clusters and also show some of the topics in each cluster.</p>
-<div class="cell" data-execution_count="375">
+<p>The heatmap contains a lot of topics but we see that topics can be put into groups according to the similarity in their time evolution. I performed this grouping quantitatively by employing <code>k-means clustering</code>. Taking a matrix of presence/absence of topics in resolutions each year, I performed k-means clustering for a range of number of clusters to find the optimal number of clusters (elbow point). Then I performed k-means clustering for the optimal number of clusters (32), and visualized the time trajectories of each of these clusters; I also mention some of the topics in each cluster.</p>
+<section id="topics-grouped-according-to-similarity-in-time-evolution" class="level4">
+<h4 class="anchored" data-anchor-id="topics-grouped-according-to-similarity-in-time-evolution"><strong>Topics grouped according to similarity in time evolution</strong></h4>
+<p>On the y-axis, I plotted a normalized value that reflects the relative occurance of topic words in resolutions by year. Each topic has a different normalization factor, so don’t compare across topics; the plots only reflect relative change over years for each topic.</p>
+<div class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -677,13 +677,14 @@ Topics: disabl, action plan, health peopl, accomplish, region nation, bank, gene
 </div>
 </section>
 </section>
+</section>
 <section id="relationships-among-wha-resolutions" class="level2">
 <h2 class="anchored" data-anchor-id="relationships-among-wha-resolutions">Relationships among WHA resolutions</h2>
-<p>Next, to find relationships among WHA resolutions, we start from the same TF-IDF based topics for each resolution. Then for each pair of resolutions, we add an “edge” if they share a sufficient number of topics. This way, we generate a network in which nodes are made up of WHA resolutions and edges depict resolution pairs sharing common topics.</p>
-<p>The set of parameters used to generate the topics and form the edges of the network are crucial towards the characteristics of the network. For example, the parameters we discussed before - minimum document frequency, maximum document frequency, n-grams used, number of topics per resolution - all matter. Fixing the minimum document frequency to 50 documents, maximum document frequency to 10%, using monograms and bigrams, below we vary (a) the number of topics per resolution and (b) minimum number of shared topics to form an edge, to generate a network of WHA resolutions.</p>
-<p>For each set of parameters, we use the Louvain method for community detection on the resulting network, and calculate a set of metrics to assess the quality of detected communities (partitions). For example, <code>modularity</code> which is the value optimized in the Louvain’s method, measures the density of links inside communities compared to links between communities, is one such metric. A high modularity reflects a good partitioning. However, a lot of nodes (resolutions) with no edges with any other nodes, i.e.&nbsp;resolutions that are in their own partition and aren’t associated with any other resolutions, will result in a high modularity.</p>
-<p>To correct for this, we also calculate other metrics - number of partitions, number of non-isolated partitions (partitions with more than one resolution in them), fraction of resolutions in non-isolated partitions, and average number of resolutions per non-isolated partition. Among these, fraction of resolutions in non-isolated partitions is a metric that we would like to be high - a lot of resolutions are grouped with one other resolution into some partition this way. As one would expect, more topics per resolution increases this metric, and more common topics to form an edge decreases this metric.</p>
-<p>Modularity and the fraction of resolutions in non-isolated partitions follow opposite trends. To balance these two forces, both of which we want to be high, we define a <code>goodness score</code> of partitioning as their product. We find that this goodness of partition is the highest (0.76) when the number of topics per resolution is 5 and the minimum number of common topics for an edge is 2.</p>
+<p>Next, to find relationships among WHA resolutions, I startd from the same TF-IDF based topics for each resolution. Then for each pair of resolutions, I added an “edge” if they share a sufficient number of topics. This way, I generated a network in which nodes are made up of WHA resolutions and edges depict resolution pairs sharing common topics.</p>
+<p>The set of parameters used to generate the topics and form the edges of the network are crucial towards the characteristics of the network. For example, the parameters we discussed before - minimum document frequency, maximum document frequency, n-grams used, number of topics per resolution - all matter. Fixing the minimum document frequency to 50 documents, maximum document frequency to 10%, using monograms and bigrams, below I varied (a) the number of topics per resolution and (b) minimum number of shared topics to form an edge, to generate a network of WHA resolutions.</p>
+<p>For each set of parameters, I used the Louvain method for community detection on the resulting network, and calculated a set of metrics to assess the quality of detected communities (partitions). For example, <code>modularity</code> which is the value optimized in the Louvain’s method, measures the density of links inside communities compared to links between communities, is one such metric. A high modularity reflects a good partitioning. However, a lot of nodes (resolutions) with no edges with any other nodes, i.e.&nbsp;resolutions that are in their own partition and aren’t associated with any other resolutions, will result in a high modularity.</p>
+<p>To correct for this, I also calculated other metrics - number of partitions, number of non-isolated partitions (partitions with more than one resolution in them), fraction of resolutions in non-isolated partitions, and average number of resolutions per non-isolated partition. Among these, fraction of resolutions in non-isolated partitions is a metric that one would like to be high - a lot of resolutions are grouped with one other resolution into some partition this way. As one would expect, more topics per resolution increases this metric, and more common topics to form an edge decreases this metric.</p>
+<p>Modularity and the fraction of resolutions in non-isolated partitions follow opposite trends. To balance these two forces, both of which we want to be high, I defined a <code>goodness score</code> of partitioning as their product of these two metrics. I found that this goodness of partition is the highest (0.76) when the number of topics per resolution is 5 and the minimum number of common topics for an edge is 2. So I used those parameters to generate the WHA network.</p>
 <div class="cell" data-execution_count="236">
 <div class="cell-output cell-output-display" data-execution_count="236">
 <pre><code>Text(0.5, 210.1666666666666, 'Minimum topics for edge')</code></pre>
@@ -707,9 +708,11 @@ Topics: disabl, action plan, health peopl, accomplish, region nation, bank, gene
 </section>
 <section id="time-evolution-of-topics-found-via-wha-resolution-network" class="level3">
 <h3 class="anchored" data-anchor-id="time-evolution-of-topics-found-via-wha-resolution-network">Time evolution of topics found via WHA resolution network</h3>
-<p>From the Louvain partitions of the WHA resolution network, we find the most frequent topics in the resolutions belonging to each partition and assign them as the “partition topics”.</p>
-<p><strong>Partition topics and their time evolution</strong></p>
-<div class="cell" data-execution_count="381">
+<p>From the Louvain partitions of the WHA resolution network, I found the most frequent topics in the resolutions belonging to each partition and assigned them as the “partition topics”.</p>
+<section id="partition-topics-and-their-time-evolution" class="level4">
+<h4 class="anchored" data-anchor-id="partition-topics-and-their-time-evolution"><strong>Partition topics and their time evolution</strong></h4>
+<p>For each topic, on the y-axis, I plotted the fraction of documents per year that mention the topic.</p>
+<div class="cell" data-execution_count="433">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -720,16 +723,21 @@ Topics: disabl, action plan, health peopl, accomplish, region nation, bank, gene
 </div>
 </section>
 </section>
+</section>
 <section id="scale-of-assessments" class="level2">
 <h2 class="anchored" data-anchor-id="scale-of-assessments">Scale of assessments</h2>
 <p>I also extracted the scale of assessments every ten years, specifically for the years 1962, 1972, 1982, 1992, 2002, 2012 and 2022. These denote the percentage contributions to the WHO budget by each country. I visualized these on a heatmap and clustered countries that have contributed similarly over the years into groups.</p>
 <p>There seem to 4-6 groups of countries according to their level of contributions + changes in their contributions. The USA, China, Canada, Italy, Japan, Germany, France and the UK have contributed most fractions of the budget.</p>
+<section id="relative-contributions-of-different-countries-to-who-budget-over-the-years-countries-grouped-by-similarity" class="level4">
+<h4 class="anchored" data-anchor-id="relative-contributions-of-different-countries-to-who-budget-over-the-years-countries-grouped-by-similarity"><strong>Relative contributions of different countries to WHO budget over the years, countries grouped by similarity</strong></h4>
+<p>Lighter colors indicate higher contribution</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="scale_of_assessments_clustermap.png" class="lightbox" title="Scale of assessments" data-gallery="quarto-lightbox-gallery-29"><img src="scale_of_assessments_clustermap.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Scale of assessments</figcaption><p></p>
 </figure>
 </div>
+</section>
 </section>
 <section id="future-directions" class="level2">
 <h2 class="anchored" data-anchor-id="future-directions">Future directions</h2>
@@ -997,7 +1005,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2022 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
