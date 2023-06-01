@@ -64,6 +64,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -294,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In general, WHA is held once every year in May, with the first session being held in 1948 and the 75th session in 2022. Each WHA resolutions is identified by a unique ID of the form <code>WHA{X}.{Y}</code> where <code>X</code> is the session number and <code>Y</code> the resolution number in that session. For example, <code>WHA75.3</code> corresponds to the 3rd resolution from the 75th session. Each resolution concerns a specific topic, and contains many “clauses” that recognize and acknowledge identified problems, issues and concerns, and suggest, recommend, direct various countries, organization and bodies both within and outside the World Health Organization (WHO) to work towards solutions. For example, these are the first few clauses of WHA73.1 from 2020’s session, titled “COVID-19 response”.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="WHA73.1_example.png" class="lightbox" title="Example resolution: WHA73.1 COVID-19 response" data-gallery="quarto-lightbox-gallery-1"><img src="WHA73.1_example.png" class="img-fluid figure-img"></a></p>
+<p><a href="WHA73.1_example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Example resolution: WHA73.1 COVID-19 response"><img src="WHA73.1_example.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Example resolution: WHA73.1 COVID-19 response</figcaption><p></p>
 </figure>
 </div>
@@ -308,7 +311,7 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="WHA_resolution_pipeline.png" class="lightbox" title="Pipeline" data-gallery="quarto-lightbox-gallery-2"><img src="WHA_resolution_pipeline.png" class="img-fluid figure-img"></a></p>
+<p><a href="WHA_resolution_pipeline.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Pipeline"><img src="WHA_resolution_pipeline.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Pipeline</figcaption><p></p>
 </figure>
 </div>
@@ -324,16 +327,257 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="cleaning_process.png" class="lightbox" title="Illustrating the steps from a scanned PDF to a clean TEXT file" data-gallery="quarto-lightbox-gallery-3"><img src="cleaning_process.png" class="img-fluid figure-img"></a></p>
+<p><a href="cleaning_process.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Illustrating the steps from a scanned PDF to a clean TEXT file"><img src="cleaning_process.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Illustrating the steps from a scanned PDF to a clean TEXT file</figcaption><p></p>
 </figure>
 </div>
 <p>Having done these steps, we end up with a list of text files (one per resolution) for each WHA session. We can read these into Python, and see all the information (resolution number of the form <code>WHA{X}.{Y}</code>, title of the resolution, year of the session and the clean text of the resolution) of all the resolutions.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>number</th>
+      <th>title</th>
+      <th>year</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>WHA1.10</td>
+      <td>Regarding the instruction in statistics in med...</td>
+      <td>1948</td>
+      <td>s WHEREAS satisfactory health statistics are d...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WHA1.2</td>
+      <td>Resolution 2: regarding the use of the Interna...</td>
+      <td>1948</td>
+      <td>WHEREAS it is essential that the International...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>WHA1.3</td>
+      <td>Resolution 3: regarding the use of lists of se...</td>
+      <td>1948</td>
+      <td>WHEREAS this Conference has adopted for the Si...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>WHA1.1</td>
+      <td>Resolution 1: regarding adoption of the Intern...</td>
+      <td>1948</td>
+      <td>WHEREAS in recognition of the general trend of...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>WHA1.4</td>
+      <td>Resolution 4: regarding the preparation of a l...</td>
+      <td>1948</td>
+      <td>REAS the Intermediate List of 150 causes does ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3157</th>
+      <td>WHA75.16</td>
+      <td>Agreement between the World Health Organizatio...</td>
+      <td>2022</td>
+      <td>Having considered the report on the proposed a...</td>
+    </tr>
+    <tr>
+      <th>3158</th>
+      <td>WHA75.17</td>
+      <td>Human resources for health</td>
+      <td>2022</td>
+      <td>Having considered the report by the Director-G...</td>
+    </tr>
+    <tr>
+      <th>3159</th>
+      <td>WHA75.18</td>
+      <td>Outcome of the SIDS Summit for Health: For a H...</td>
+      <td>2022</td>
+      <td>Having considered the consolidated report by t...</td>
+    </tr>
+    <tr>
+      <th>3160</th>
+      <td>WHA75.19</td>
+      <td>Well-being and health promotion</td>
+      <td>2022</td>
+      <td>Having considered the consolidated report by t...</td>
+    </tr>
+    <tr>
+      <th>3161</th>
+      <td>WHA75.20</td>
+      <td>The global health sector strategies on, respec...</td>
+      <td>2022</td>
+      <td>Having considered the consolidated report by t...</td>
+    </tr>
+  </tbody>
+</table>
+<p>3162 rows × 4 columns</p>
+</div>
+</div>
+</div>
 <p>Note that some of the words in the first session’s resolutions have been cut off at the beginning. There are indeed a few other resolutions where such unwanted errors and typos are present. A common type of typo is a missing space between words. However, these aren’t very common, so I left them as they are.</p>
 </section>
 <section id="first-look-at-topics-and-their-time-evolution" class="level2">
 <h2 class="anchored" data-anchor-id="first-look-at-topics-and-their-time-evolution">First look at topics and their time evolution</h2>
 <p>To get a taste of the topics of WHA resolutions and their evolution over time, I chose a few topics of interest like “Sustainability”, “HIV”, “Climate Change”, “COVID-19” etc. and checked how often short phrases related to each of these topics are present in resolutions from different years.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="analyze_keywords_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="analyze_keywords_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="analyze_keywords_files/figure-html/cell-6-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="analyze_keywords_files/figure-html/cell-6-output-4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="analyze_keywords_files/figure-html/cell-6-output-5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="analyze_keywords_files/figure-html/cell-6-output-6.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="analyze_keywords_files/figure-html/cell-6-output-7.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="analyze_keywords_files/figure-html/cell-6-output-8.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="analyze_keywords_files/figure-html/cell-6-output-9.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="analyze_keywords_files/figure-html/cell-6-output-10.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="analyze_keywords_files/figure-html/cell-6-output-11.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="analyze_keywords_files/figure-html/cell-6-output-12.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="analyze_keywords_files/figure-html/cell-6-output-13.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="analyze_keywords_files/figure-html/cell-6-output-14.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="analyze_keywords_files/figure-html/cell-6-output-15.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="analyze_keywords_files/figure-html/cell-6-output-16.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="analyze_keywords_files/figure-html/cell-6-output-17.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="analyze_keywords_files/figure-html/cell-6-output-18.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="analyze_keywords_files/figure-html/cell-6-output-19.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-6-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="analyze_keywords_files/figure-html/cell-6-output-20.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="identification-of-topics-and-grouping-by-their-time-evolution" class="level2">
 <h2 class="anchored" data-anchor-id="identification-of-topics-and-grouping-by-their-time-evolution">Identification of topics and grouping by their time evolution</h2>
@@ -341,16 +585,83 @@ ul.task-list li input[type="checkbox"] {
 <p>I won’t go into many details behind the natural language processing pipeline and will only briefly summarize it. Each resolution is associated with two strings - <code>title</code> and <code>text</code>. For both of these strings, I performed the usual NLP pre-processing steps like tokenization, removal of stop words, and additional text cleaning like removing special characters and numbers. Then, I also stemmized all the tokens (words) in these strings so that different words like “sustainability”, “sustainable”, “sustain”, “sustains”, “sustaining”, “sustained” were all reduced to a common form “sustain”. This collection of cleaned and stemmized documents (each resolution is a document) is called a corpus. We have two stemmized corpuses - <code>corpus_title</code> and <code>corpus_text</code>. For the following explanation, I’ll refer to <code>corpus_text</code> as the corpus, and I used only the <code>corpus_text</code> in this study.</p>
 <p>So, the corpus is a collection of documents (resolutions), and each document is a collection of words (after having removed special characters, numbers and stop words which are commonly occuring English words like “the”, “a” etc.). For each word in the corpus, I calculated its <code>document frequency</code>, which is the fraction of documents containing the word. For each pair of word and document, I also calculated the <code>TF-IDF score</code>, a score that is a combination of term frequency and inverse document frequency. What is important to note is that TF-IDF score is intended to reflect how important a word is to a document.</p>
 <p>First, we’ll check these two values for all the words in the corpus, and also check how the vocabulary size (no. of words) changes as we modify the minimum document frequency and maximum document frequency allowed.</p>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="analyze_keywords_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Words with a very high document frequency are probably those that aren’t very relevant to the specific topic of the resolution, and are just very often used in WHA resolutions. So, using a maximum allowed document frequency is a good way to exclude those words from further analysis. One can use a maximum document frequency of either 0.05 or 0.1. This means that one excludes words that are present in more than 5% (around 150 resolutions) or than 10% (around 300 resolutions) of documents.</p>
 <p>One can also put a minimum document frequency, which will require words to be present in at least a specific number of resolutions, for example 5, 10 or 50. This will get rid of super-specific words, typos and other such errors. Putting these restrictions on what words to consider, I then proceeded to calculate the TF-IDF score for each document-word pair. Remember, the TF-IDF score is intended to quantify a word’s importance in a document. Then, for each document, I selected the top <code>n_w</code> words with the highest TF-IDF scores.</p>
 <p>I counted both single words (monograms) and two-word phrases (bigrams) - they will be called <strong>topics</strong> together. Using minimum document frequency as 50 resolutions, maximum document frequency as 5% (around 150 resolutions) and obtaining top <code>n_w = 10</code> topics from each document, I obtained a total of <strong>1136 unique topics</strong>.</p>
 <p>Here are a few examples.</p>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-stdout">
+<pre><code>WHA2.27: Insulin
+Topics: gener studi, advis, explor, manufactur, possibl, programm adopt
+
+WHA4.48: WHO seals
+Topics: supplement, ona, assembl suspens, toit, inconform, suggest, organ request, gener submit, fund health, gener implement
+
+WHA6.56: Special benefit for retiring Director-General
+Topics: staff pension, pension, save, work capit, capit fund, capit, contract, occur, budget estim, sum
+
+WHA15.34: Malaria eradication special account
+Topics: malaria, erad, special account, erad programm, cash, voluntari contribut, transit, programm request, laid, regularli
+
+WHA23.18: Headquarters accommodation: report on financing
+Topics: headquart, real estat, estat, expens, real, sum, reflect, main, share, outcom
+
+WHA29.37: Amendments to the rules of procedures of the World Health Assembly
+Topics: point, presid, deleg, rule procedur, associ member, add, appeal, aris, follow, statement
+
+WHA29.22: Report on the world health situation
+Topics: health situat, publish, content, analysi, programm work, gener programm, improv qualiti, subsequ health, report request, russian
+
+WHA31.26: Health and medical assistance to Lebanon
+Topics: lebanon, creat, assist provid, injuri, assembl mind, mainten, previou resolut, organ health, peac secur, express appreci
+
+WHA32.22: Collaboration with the United Nations system: cooperation with newly independent and emerging States in Africa: liberation struggle in Southern Africa
+Topics: assembl implement, elect, health year, independ, resolut health
+
+WHA34.33: Collaboration with the United Nations system: cooperation with newly independent and emerging States in Africa: special programme of cooperation with the Republic of Chad
+Topics: chad, special programm, spirit, inclos, technic financi, health situat, programm request, invit member, possibl, region director
+
+WHA35.13: Transfer of the Regional Office for the Eastern Mediterranean
+Topics: advantag, gener prepar, effect implement, goal health, submit health, opinion, resolut ebr, maximum, believ, implement health
+
+WHA36.17: Real estate fund and Headquarters accommodation
+Topics: real estat, estat, real, headquart, main, region offic, construct, casual incom, casual, water
+
+WHA46.12: Assessment of the Czech Republic and the Slovak Republic
+Topics: assess rate, nation scale, rate establish, latest, state concern, fix, replac, budgetari, share, scale assess
+
+WHA47.1: Rights and privileges of South Africa
+Topics: south africa, south, grant, activ health, democrat, elect, instal, anew, constitut health, fulfil
+
+WHA49.21: Collaboration within the United Nations system and with other intergovernmental organizations: strengthening of the coordination of emergency humanitarian assistance
+Topics: humanitarian, document rec, advocaci, disast, prepared, rec, draw attent, anew, assembl resolut, defin
+
+WHA54.9: Assessment of the Federal Republic of Yugoslavia
+Topics: yugoslavia, feder, scale assess, assembl establish, nation scale, latest, principl establish, confirm
+
+WHA71.12: Salaries of staff in ungraded positions and of the Director-General
+Topics: salari, net, annum, remuner, board regard, note recommend, gener establish, gener region, region director, post
+
+WHA75.10: Status of collection of assessed contributions, including Member States in arrears in the payment of their contributions to an extent that would justify invoking Article 7 of the Constitution of the World Health Organization
+Topics: constitut health, open, arrear, invok articl, justifi, invok, vote privileg, suspend, privileg, cameroon
+</code></pre>
+</div>
+</div>
 <section id="monograms-bigrams-topics-and-their-time-evolution" class="level3">
 <h3 class="anchored" data-anchor-id="monograms-bigrams-topics-and-their-time-evolution">Monograms + bigrams: topics and their time evolution</h3>
 <p>To visualize the found topics and their time evolution of occurance in WHA resolutions, I clustered the topics according to their time trajectory of counts and visualized it as a heatmap. Topics with similar trajectories are clustered together for easier visualization.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="ngram12_cluster_heatmap.png" class="lightbox" title="1-gram + 2-gram clustered heatmap of topics" data-gallery="quarto-lightbox-gallery-4"><img src="ngram12_cluster_heatmap.png" class="img-fluid figure-img"></a></p>
+<p><a href="ngram12_cluster_heatmap.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="1-gram + 2-gram clustered heatmap of topics"><img src="ngram12_cluster_heatmap.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">1-gram + 2-gram clustered heatmap of topics</figcaption><p></p>
 </figure>
 </div>
@@ -361,6 +672,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="topics-grouped-according-to-similarity-in-time-evolution" class="level4">
 <h4 class="anchored" data-anchor-id="topics-grouped-according-to-similarity-in-time-evolution"><strong>Topics grouped according to similarity in time evolution</strong></h4>
 <p>On the y-axis, I plotted a normalized value that reflects the relative occurance of topic words in resolutions by year. Each topic has a different normalization factor, so don’t compare across topics; the plots only reflect relative change over years for each topic.</p>
+<div class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="analyze_keywords_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -371,11 +691,23 @@ ul.task-list li input[type="checkbox"] {
 <p>For each set of parameters, I used the Louvain method for community detection on the resulting network, and calculated a set of metrics to assess the quality of detected communities (partitions). For example, <code>modularity</code> which is the value optimized in the Louvain’s method, measures the density of links inside communities compared to links between communities, is one such metric. A high modularity reflects a good partitioning. However, a lot of nodes (resolutions) with no edges with any other nodes, i.e.&nbsp;resolutions that are in their own partition and aren’t associated with any other resolutions, will result in a high modularity.</p>
 <p>To correct for this, I also calculated other metrics - number of partitions, number of non-isolated partitions (partitions with more than one resolution in them), fraction of resolutions in non-isolated partitions, and average number of resolutions per non-isolated partition. Among these, fraction of resolutions in non-isolated partitions is a metric that one would like to be high - a lot of resolutions are grouped with one other resolution into some partition this way. As one would expect, more topics per resolution increases this metric, and more common topics to form an edge decreases this metric.</p>
 <p>Modularity and the fraction of resolutions in non-isolated partitions follow opposite trends. To balance these two forces, both of which we want to be high, I defined a <code>goodness score</code> of partitioning as their product of these two metrics. I found that this goodness of partition is the highest (0.76) when the number of topics per resolution is 5 and the minimum number of common topics for an edge is 2. So I used those parameters to generate the WHA network.</p>
+<div class="cell" data-execution_count="236">
+<div class="cell-output cell-output-display" data-execution_count="236">
+<pre><code>Text(0.5, 210.1666666666666, 'Minimum topics for edge')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-18-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="analyze_keywords_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
 <section id="network-of-wha-resolutions" class="level3">
 <h3 class="anchored" data-anchor-id="network-of-wha-resolutions">Network of WHA resolutions</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="WHA_network_annotated.png" class="lightbox" title="WHA resolution network with nodes colored by the partition they belong to, and topics of the partitions." data-gallery="quarto-lightbox-gallery-5"><img src="WHA_network_annotated.png" class="img-fluid figure-img"></a></p>
+<p><a href="WHA_network_annotated.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="WHA resolution network with nodes colored by the partition they belong to, and topics of the partitions."><img src="WHA_network_annotated.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">WHA resolution network with nodes colored by the partition they belong to, and topics of the partitions.</figcaption><p></p>
 </figure>
 </div>
@@ -386,6 +718,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="partition-topics-and-their-time-evolution" class="level4">
 <h4 class="anchored" data-anchor-id="partition-topics-and-their-time-evolution"><strong>Partition topics and their time evolution</strong></h4>
 <p>For each topic, on the y-axis, I plotted the fraction of documents per year that mention the topic.</p>
+<div class="cell" data-execution_count="433">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="analyze_keywords_files/figure-html/cell-23-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="analyze_keywords_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -398,7 +739,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Lighter colors indicate higher contribution</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="scale_of_assessments_clustermap.png" class="lightbox" title="Scale of assessments" data-gallery="quarto-lightbox-gallery-6"><img src="scale_of_assessments_clustermap.png" class="img-fluid figure-img"></a></p>
+<p><a href="scale_of_assessments_clustermap.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="Scale of assessments"><img src="scale_of_assessments_clustermap.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">Scale of assessments</figcaption><p></p>
 </figure>
 </div>
@@ -410,6 +751,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Quantify WHA resolution network characteristics over years in n-year periods: understand evolution of network architecture.</li>
 <li>Compare and supplement usage of resolution titles to such above analysis.</li>
 <li>Analyze citation network of WHA resolutions.</li>
+<li>Explore different parameter sets (min/max document frequency etc.) to find more general/specific topics, less frequent topics and so on.</li>
 </ol>
 
 
@@ -670,7 +1012,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2022 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 
