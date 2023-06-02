@@ -377,6 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="g-col-12 g-col-md-6">
+<p><strong>Select an actor:</strong></p>
 <div class="grid hero-avatar-grid">
 <div class="g-col-3">
 <p><a href="./hero_based_age_gap/Chiranjeevi.png" class="lightbox hero-link" title="Chiranjeevi" data-gallery="my-gallery"> <img src="avatars/Chiranjeevi.jpg" width="75px" height="75px" class="avatar"> </a></p>
@@ -419,16 +420,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="133" data-source-offset="-119"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 132;"><span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>hero_names <span class="op">=</span> [</span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Aamir Khan'</span><span class="op">,</span> <span class="st">'Mahesh Babu'</span><span class="op">,</span> <span class="st">'Akshay Kumar'</span></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co">// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})</span></span>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="135" data-source-offset="-119"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>hero_names <span class="op">=</span> [</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Aamir Khan'</span><span class="op">,</span> <span class="st">'Mahesh Babu'</span><span class="op">,</span> <span class="st">'Akshay Kumar'</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
 <span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayImage</span>(option) {</span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`&lt;a href="./hero_based_age_gap/</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">.png" class="lightbox" title="</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">" data-gallery="my-gallery"&gt;</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>  <span class="co">// return `&lt;p&gt;&lt;a href="hero_based_age_gap/${option}.png" class="lightbox" data-gallery="my-gallery" title="Resolution writing as part of the October 2022 (online) session on “Energy Security &amp;amp; Health”."&gt;&lt;img class="img-fluid figure-img zoomable" src="hero_based_age_gap/${option}.png" width="100%"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;`;</span></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="co">// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayImage</span>(option) {</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`&lt;a href="./hero_based_age_gap/</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">.png" class="lightbox" title="</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">" data-gallery="my-gallery"&gt;</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="co">// return `&lt;p&gt;&lt;a href="hero_based_age_gap/${option}.png" class="lightbox" data-gallery="my-gallery" title="Resolution writing as part of the October 2022 (online) session on “Energy Security &amp;amp; Health”."&gt;&lt;img class="img-fluid figure-img zoomable" src="hero_based_age_gap/${option}.png" width="100%"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;`;</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -713,7 +714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2022 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":true,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});</script>
 
 
 
