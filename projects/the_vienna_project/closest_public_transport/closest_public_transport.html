@@ -261,6 +261,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#interactive-with-r-shiny" id="toc-interactive-with-r-shiny" class="nav-link" data-scroll-target="#interactive-with-r-shiny">Interactive with R Shiny</a></li>
   <li><a href="#speeding-up-computations" id="toc-speeding-up-computations" class="nav-link" data-scroll-target="#speeding-up-computations">Speeding up computations</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
     </div>
@@ -275,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Vienna is considered to have an excellent public transport system, and one of the talking points is the accessibility of some form of public transport or the other in most areas of the city. In this project, I probe this aspect by creating a exhaustive dataset of (all!) addresses in Vienna along with the closest public transport by type (U-bahn, tram, bus, night bus) and the walking distance to this closest stop.</p>
 <p>To implement this, I used the following datasets and tools:</p>
 <ol type="a">
-<li>GTFS feeds of Wiener Linien (and Wiener Lokalbahnen) from <a href="https://www.transit.land/feeds/f-u2ed-wienerlinien~wlb">transit.land</a>, which contains details about the various public transport stops, coordiantes, routes and schedules.</li>
+<li>GTFS feeds of Wiener Linien (and Wiener Lokalbahnen) from <a href="https://www.transit.land/feeds/f-u2ed-wienerlinien~wlb">transit.land</a>, which contain details about the various public transport stops, coordiantes, routes and schedules.</li>
 <li><a href="https://www.data.gv.at/katalog/dataset/1d5c2411-9719-4c8f-b99d-57a5f4a4ae41#additional-info">Adressen Standorte Wien</a> from Cooperation OGD Österreich, which gives details of addresses in Vienna and their coordinates.</li>
 <li>A local Docker-installation of <a href="https://openrouteservice.org">openrouteservice</a> to query walking distances between addresses and public transport stops.</li>
 <li>R Shiny to create an interactive app allowing users to change district, public transport type, and distance threshold to see which areas of the district have public transport access inside the selected distance threshold.</li>
@@ -294,7 +295,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you don’t see anything below, force your browser to <a href="http://roshanprizak.com/projects/the_vienna_project/closest_public_transport/closest_public_transport.html">use HTTP</a> instead of HTTPS. Switch <a href="https://roshanprizak.com/projects/the_vienna_project/closest_public_transport/closest_public_transport.html">back to HTTPS</a> after you are done interacting with the Shiny app.</p>
+<p>If you don’t see anything below even after waiting 15 seconds, force your browser to <a href="http://roshanprizak.com/projects/the_vienna_project/closest_public_transport/closest_public_transport.html">use HTTP</a> instead of HTTPS. Switch <a href="https://roshanprizak.com/projects/the_vienna_project/closest_public_transport/closest_public_transport.html">back to HTTPS</a> after you are done interacting with the Shiny app.</p>
 </div>
 </div>
 <div class="column-page-inset-right">
@@ -305,7 +306,11 @@ Interactive exploration in R Shiny
 </section>
 <section id="speeding-up-computations" class="level2">
 <h2 class="anchored" data-anchor-id="speeding-up-computations">Speeding up computations</h2>
-<p>There are a lot of coordinates for each district, making the task of finding the areas computationally heavy. So currently, I’m sampling addresses from the district such that there aren’t too many addresses too close to each other (they have a high probability of having the same closest public transport). I also use <code>st_simplify</code> with a large <code>dTolerance</code> and <code>st_buffer</code> with a large distance value. This speeds up the process of finding the clouds of areas from a large set of coordinates. This, however, is still slow for large districts like 1020, 1200, 1230, and also for large distance thresholds. Next, I’d like to try other methods of speeding up this computation. Some options are to pre-compute the areas for different thresholds using <code>DBSCAN</code>, a density-based clustering algorithm, and <code>Shapely</code>’s <code>unary_union</code>.</p>
+<p>There are a lot of coordinates for each district, making the task of finding the areas computationally heavy. So currently, I’m sampling addresses from the district such that there aren’t too many addresses too close to each other (they have a high probability of having the same closest public transport). This is one of the reasons why you might notice that some areas that ought to be covered sometimes aren’t. I also use <code>st_simplify</code> with a large <code>dTolerance</code> and <code>st_buffer</code> with a large distance value. This speeds up the process of finding the clouds of areas from a large set of coordinates. This, however, is still slow for large districts like 1020, 1200, 1230, and also for large distance thresholds. Next, I’d like to try other methods of speeding up this computation. Some options are to pre-compute the areas for different thresholds using <code>DBSCAN</code>, a density-based clustering algorithm, and <code>Shapely</code>’s <code>unary_union</code>.</p>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>The code is available <a href="https://github.com/roshanprizak/public-transport-accessibility-vienna">here</a> on GitHub.</p>
 
 
 </section>

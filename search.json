@@ -67,21 +67,28 @@
     "href": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html",
     "title": "How close is public transport in Vienna?",
     "section": "",
-    "text": "Vienna is considered to have an excellent public transport system, and one of the talking points is the accessibility of some form of public transport or the other in most areas of the city. In this project, I probe this aspect by creating a exhaustive dataset of (all!) addresses in Vienna along with the closest public transport by type (U-bahn, tram, bus, night bus) and the walking distance to this closest stop.\nTo implement this, I used the following datasets and tools:\n\nGTFS feeds of Wiener Linien (and Wiener Lokalbahnen) from transit.land, which contains details about the various public transport stops, coordiantes, routes and schedules.\nAdressen Standorte Wien from Cooperation OGD Österreich, which gives details of addresses in Vienna and their coordinates.\nA local Docker-installation of openrouteservice to query walking distances between addresses and public transport stops.\nR Shiny to create an interactive app allowing users to change district, public transport type, and distance threshold to see which areas of the district have public transport access inside the selected distance threshold.\nAn AWS (Amazon Web Services) EC2 instance to deploy the app and embed here."
+    "text": "Vienna is considered to have an excellent public transport system, and one of the talking points is the accessibility of some form of public transport or the other in most areas of the city. In this project, I probe this aspect by creating a exhaustive dataset of (all!) addresses in Vienna along with the closest public transport by type (U-bahn, tram, bus, night bus) and the walking distance to this closest stop.\nTo implement this, I used the following datasets and tools:\n\nGTFS feeds of Wiener Linien (and Wiener Lokalbahnen) from transit.land, which contain details about the various public transport stops, coordiantes, routes and schedules.\nAdressen Standorte Wien from Cooperation OGD Österreich, which gives details of addresses in Vienna and their coordinates.\nA local Docker-installation of openrouteservice to query walking distances between addresses and public transport stops.\nR Shiny to create an interactive app allowing users to change district, public transport type, and distance threshold to see which areas of the district have public transport access inside the selected distance threshold.\nAn AWS (Amazon Web Services) EC2 instance to deploy the app and embed here."
   },
   {
     "objectID": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#interactive-with-r-shiny",
     "href": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#interactive-with-r-shiny",
     "title": "How close is public transport in Vienna?",
     "section": "Interactive with R Shiny",
-    "text": "Interactive with R Shiny\n\n\n\n\n\n\nImportant\n\n\n\nIf you don’t see anything below, force your browser to use HTTP instead of HTTPS. Switch back to HTTPS after you are done interacting with the Shiny app.\n\n\n\n\nInteractive exploration in R Shiny"
+    "text": "Interactive with R Shiny\n\n\n\n\n\n\nImportant\n\n\n\nIf you don’t see anything below even after waiting 15 seconds, force your browser to use HTTP instead of HTTPS. Switch back to HTTPS after you are done interacting with the Shiny app.\n\n\n\n\nInteractive exploration in R Shiny"
   },
   {
     "objectID": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#speeding-up-computations",
     "href": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#speeding-up-computations",
     "title": "How close is public transport in Vienna?",
     "section": "Speeding up computations",
-    "text": "Speeding up computations\nThere are a lot of coordinates for each district, making the task of finding the areas computationally heavy. So currently, I’m sampling addresses from the district such that there aren’t too many addresses too close to each other (they have a high probability of having the same closest public transport). I also use st_simplify with a large dTolerance and st_buffer with a large distance value. This speeds up the process of finding the clouds of areas from a large set of coordinates. This, however, is still slow for large districts like 1020, 1200, 1230, and also for large distance thresholds. Next, I’d like to try other methods of speeding up this computation. Some options are to pre-compute the areas for different thresholds using DBSCAN, a density-based clustering algorithm, and Shapely’s unary_union."
+    "text": "Speeding up computations\nThere are a lot of coordinates for each district, making the task of finding the areas computationally heavy. So currently, I’m sampling addresses from the district such that there aren’t too many addresses too close to each other (they have a high probability of having the same closest public transport). This is one of the reasons why you might notice that some areas that ought to be covered sometimes aren’t. I also use st_simplify with a large dTolerance and st_buffer with a large distance value. This speeds up the process of finding the clouds of areas from a large set of coordinates. This, however, is still slow for large districts like 1020, 1200, 1230, and also for large distance thresholds. Next, I’d like to try other methods of speeding up this computation. Some options are to pre-compute the areas for different thresholds using DBSCAN, a density-based clustering algorithm, and Shapely’s unary_union."
+  },
+  {
+    "objectID": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#code",
+    "href": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html#code",
+    "title": "How close is public transport in Vienna?",
+    "section": "Code",
+    "text": "Code\nThe code is available here on GitHub."
   },
   {
     "objectID": "projects/health/health.html",
@@ -138,6 +145,13 @@
     "title": "A closer look into the resolutions of the World Health Assembly",
     "section": "Future directions",
     "text": "Future directions\n\nQuantify WHA resolution network characteristics over years in n-year periods: understand evolution of network architecture.\nCompare and supplement usage of resolution titles to such above analysis.\nAnalyze citation network of WHA resolutions.\nExplore different parameter sets (min/max document frequency etc.) to find more general/specific topics, less frequent topics and so on."
+  },
+  {
+    "objectID": "projects/health/wha_resolutions/analyze_keywords.html#code",
+    "href": "projects/health/wha_resolutions/analyze_keywords.html#code",
+    "title": "A closer look into the resolutions of the World Health Assembly",
+    "section": "Code",
+    "text": "Code\nThe code is available here on GitHub."
   },
   {
     "objectID": "projects/cricket_analytics/cricket_analytics.html",
