@@ -53,14 +53,14 @@
     "href": "projects/the_india_project/the_india_project.html",
     "title": "The India Project",
     "section": "",
-    "text": "Explore various aspects of movies like actor-actress age gaps.\nRead more\n\n\n\n\n\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\nRead more\n\n\n\n\n\nUse various data on cattle census, milk and meat production and herd models to depict possible lives of individual animals.\nComing soon\n\n\n\n\nUsing NLP techniques, uncover patterns behind the questions and answers in the Question Hour of the Lok Sabha and Rajya Sabha sessions in India.\nComing soon\n\n\n\n\nComing soon"
+    "text": "Explore various aspects of movies like actor-actress age gaps.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse various data on cattle census, milk and meat production and herd models to depict possible lives of individual animals.\nComing soon\n\n\n\n\nUsing NLP techniques, uncover patterns behind the questions and answers in the Question Hour of the Lok Sabha and Rajya Sabha sessions in India.\nComing soon\n\n\n\n\nComing soon"
   },
   {
     "objectID": "projects/the_vienna_project/the_vienna_project.html",
     "href": "projects/the_vienna_project/the_vienna_project.html",
     "title": "The Vienna Project",
     "section": "",
-    "text": "Evaluating accessibility of Vienna’s public transport in different parts of the city.\nRead more\n\n\n\n\n\nEvaluating Vienna’s public transport and comparisons with other cities.\nCome up with a framework that incorporates different metrics of evaluating public transport - for instance, connectivity, reliability, robustness, cost-effectiveness, last-mile connectivity, and use them to analyze the “goodness” of public transport in Vienna and other cities around the world.\nComing soon"
+    "text": "Evaluating accessibility of Vienna’s public transport in different parts of the city.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating Vienna’s public transport and comparisons with other cities.\nCome up with a framework that incorporates different metrics of evaluating public transport - for instance, connectivity, reliability, robustness, cost-effectiveness, last-mile connectivity, and use them to analyze the “goodness” of public transport in Vienna and other cities around the world.\nComing soon"
   },
   {
     "objectID": "projects/the_vienna_project/closest_public_transport/closest_public_transport.html",
@@ -151,7 +151,7 @@
     "href": "projects/cricket_analytics/cricket_analytics.html#some-projects",
     "title": "Cricket Analytics",
     "section": "Some projects",
-    "text": "Some projects\n\n\n\n\n\n\n\n\nBatter strategies and their impacts in the IPL\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nRead more\n\n\n\n\nWhat does “Umpire’s Call” tell us about umpire bias?\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nComing soon\n\n\n\nPredicting shot played by batter from text commentary\nTrain a deep network to predict shot played by batters from text commentary and wagon wheel.\nComing soon\n\n\n\nQuantifying context-aware extra runs scored by batters in the IPL\nDevelop a context-aware measure of extra runs scored by IPL batters and classify batters based on this metric.\nComing soon"
+    "text": "Some projects\n\n::: {.grid style=“padding-top:15px”} ::: {.g-col-md-4 .g-col-12 .text-center .desktop-only} ::: {.border}  ::: :::\n\nBatter strategies and their impacts in the IPL\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\nWhat does “Umpire’s Call” tell us about umpire bias?\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nComing soon\n\n\n\nPredicting shot played by batter from text commentary\nTrain a deep network to predict shot played by batters from text commentary and wagon wheel.\nComing soon\n\n\n\nQuantifying context-aware extra runs scored by batters in the IPL\nDevelop a context-aware measure of extra runs scored by IPL batters and classify batters based on this metric.\nComing soon"
   },
   {
     "objectID": "projects/cricket_analytics/ipl_batters_strategies/ipl_batters_strategies.html",
