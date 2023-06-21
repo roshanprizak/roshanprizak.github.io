@@ -21,6 +21,13 @@
     "text": "Age gap between lead male and female actors\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}"
   },
   {
+    "objectID": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
+    "href": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
+    "title": "Indian movies and gender inequality",
+    "section": "A deeper dive into Telugu cinema",
+    "text": "A deeper dive into Telugu cinema"
+  },
+  {
     "objectID": "projects/the_india_project/car_prices_india/car_prices_india.html",
     "href": "projects/the_india_project/car_prices_india/car_prices_india.html",
     "title": "How affordable are cars with 6+ airbags?",
