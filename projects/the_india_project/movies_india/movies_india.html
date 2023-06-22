@@ -336,8 +336,15 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#age-gap-between-lead-male-and-female-actors" id="toc-age-gap-between-lead-male-and-female-actors" class="nav-link" data-scroll-target="#age-gap-between-lead-male-and-female-actors">Age gap between lead male and female actors</a></li>
-  <li><a href="#a-deeper-dive-into-telugu-cinema" id="toc-a-deeper-dive-into-telugu-cinema" class="nav-link" data-scroll-target="#a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</a></li>
+  <li><a href="#pilot-age-gaps-for-major-heroes" id="toc-pilot-age-gaps-for-major-heroes" class="nav-link" data-scroll-target="#pilot-age-gaps-for-major-heroes">Pilot: age gaps for major heroes</a></li>
+  <li><a href="#a-deeper-dive-into-telugu-cinema" id="toc-a-deeper-dive-into-telugu-cinema" class="nav-link" data-scroll-target="#a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</a>
+  <ul class="collapse">
+  <li><a href="#ages-and-age-gaps-over-the-years" id="toc-ages-and-age-gaps-over-the-years" class="nav-link" data-scroll-target="#ages-and-age-gaps-over-the-years">Ages and age gaps over the years</a></li>
+  <li><a href="#debuts-and-exits" id="toc-debuts-and-exits" class="nav-link" data-scroll-target="#debuts-and-exits">Debuts and exits</a></li>
+  <li><a href="#careers-and-marriages" id="toc-careers-and-marriages" class="nav-link" data-scroll-target="#careers-and-marriages">Careers and marriages</a></li>
+  <li><a href="#female-lead-movies-and-genres" id="toc-female-lead-movies-and-genres" class="nav-link" data-scroll-target="#female-lead-movies-and-genres">Female-lead movies and genres</a></li>
+  <li><a href="#where-have-heroes-and-heroines-come-from" id="toc-where-have-heroes-and-heroines-come-from" class="nav-link" data-scroll-target="#where-have-heroes-and-heroines-come-from">Where have heroes and heroines come from?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -349,18 +356,11 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The lead male actor and the lead female actor are important roles in a movie. In mainstream Indian movies, it has been noticed that the lead male actor is often a lot older compared to the lead female actor, but the ages of the characters they play in the movie are comparable. In this project, I want to explore such biases in mainstream Indian cinema. As a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few leading male actors (heroes) in mainstream Indian cinema, along with the ages of the lead male actor and the lead female actor in each movie.</p>
-<p>Later, I want to look for patterns and differences in this across languages/regions, movie genres and over the years.</p>
-<p>Some questions to consider are:</p>
-<ol type="1">
-<li>How the age gap between the lead male actor and lead female actor age gap look like for various actors from across mainstream Indian cinema?</li>
-<li>How has this changed over the years?</li>
-<li>How does this compare across cinema from different regions?</li>
-<li>How does the typical career of an actress compare with that of an actor?</li>
-</ol>
+<p>The lead male actor and the lead female actor are important roles in a movie. In mainstream Indian movies, it has been noticed that the lead male actor is often a lot older compared to the lead female actor, but the ages of the characters they play in the movie are comparable. In this project, I want to explore such biases in mainstream Indian cinema.</p>
 </section>
-<section id="age-gap-between-lead-male-and-female-actors" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="age-gap-between-lead-male-and-female-actors">Age gap between lead male and female actors</h2>
+<section id="pilot-age-gaps-for-major-heroes" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="pilot-age-gaps-for-major-heroes">Pilot: age gaps for major heroes</h2>
+<p>As a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few leading male actors (heroes) in mainstream Indian cinema, along with the ages of the lead male actor and the lead female actor in each movie.</p>
 <div class="column-body">
 <div class="grid text-center">
 <div class="g-col-12 g-col-md-6">
@@ -414,16 +414,16 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="135" data-source-offset="-119"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>hero_names <span class="op">=</span> [</span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Aamir Khan'</span><span class="op">,</span> <span class="st">'Mahesh Babu'</span><span class="op">,</span> <span class="st">'Akshay Kumar'</span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="co">// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})</span></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayImage</span>(option) {</span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`&lt;a href="./hero_based_age_gap/</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">.png" class="lightbox" title="</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">" data-gallery="my-gallery"&gt;</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>  <span class="co">// return `&lt;p&gt;&lt;a href="hero_based_age_gap/${option}.png" class="lightbox" data-gallery="my-gallery" title="Resolution writing as part of the October 2022 (online) session on “Energy Security &amp;amp; Health”."&gt;&lt;img class="img-fluid figure-img zoomable" src="hero_based_age_gap/${option}.png" width="100%"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;`;</span></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="128" data-source-offset="-119"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 127;"><span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>hero_names <span class="op">=</span> [</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Aamir Khan'</span><span class="op">,</span> <span class="st">'Mahesh Babu'</span><span class="op">,</span> <span class="st">'Akshay Kumar'</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="co">// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displayImage</span>(option) {</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="vs">`&lt;a href="./hero_based_age_gap/</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">.png" class="lightbox" title="</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">" data-gallery="my-gallery"&gt;</span><span class="sc">${</span>option<span class="sc">}</span><span class="vs">&lt;/a&gt;`</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>  <span class="co">// return `&lt;p&gt;&lt;a href="hero_based_age_gap/${option}.png" class="lightbox" data-gallery="my-gallery" title="Resolution writing as part of the October 2022 (online) session on “Energy Security &amp;amp; Health”."&gt;&lt;img class="img-fluid figure-img zoomable" src="hero_based_age_gap/${option}.png" width="100%"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;`;</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -439,9 +439,13 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+<p><br> For all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. How has this changed over the years? How does marriage affect the careers of heroes and heroines?</p>
 </section>
 <section id="a-deeper-dive-into-telugu-cinema" class="level2">
 <h2 class="anchored" data-anchor-id="a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</h2>
+<p>I chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects.</p>
+<section id="ages-and-age-gaps-over-the-years" class="level3">
+<h3 class="anchored" data-anchor-id="ages-and-age-gaps-over-the-years">Ages and age gaps over the years</h3>
 <div style="min-height:400px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/60eFX/embed.js" charset="utf-8"></script>
 <noscript>
@@ -460,6 +464,9 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <img src="https://datawrapper.dwcdn.net/kir9k/full.png" alt="">
 </noscript>
 </div>
+</section>
+<section id="debuts-and-exits" class="level3">
+<h3 class="anchored" data-anchor-id="debuts-and-exits">Debuts and exits</h3>
 <div style="min-height:400px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/DNU2J/embed.js" charset="utf-8"></script>
 <noscript>
@@ -472,6 +479,18 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <img src="https://datawrapper.dwcdn.net/NObY3/full.png" alt="">
 </noscript>
 </div>
+</section>
+<section id="careers-and-marriages" class="level3">
+<h3 class="anchored" data-anchor-id="careers-and-marriages">Careers and marriages</h3>
+<div style="min-height:520px; max-width: 600px; margin-top:30px;">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/GkQk8/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/GkQk8/full.png" alt="">
+</noscript>
+</div>
+</section>
+<section id="female-lead-movies-and-genres" class="level3">
+<h3 class="anchored" data-anchor-id="female-lead-movies-and-genres">Female-lead movies and genres</h3>
 <div style="min-height:400px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/Qah6K/embed.js" charset="utf-8"></script>
 <noscript>
@@ -479,31 +498,41 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </noscript>
 </div>
 <div style="min-height:600px; max-width: 600px; margin-top:30px;">
-<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/H5Zar/embed.js" charset="utf-8"></script>
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/870lN/embed.js" charset="utf-8"></script>
 <noscript>
-<img src="https://datawrapper.dwcdn.net/H5Zar/full.png" alt="">
+<img src="https://datawrapper.dwcdn.net/870lN/full.png" alt="">
 </noscript>
 </div>
-<div style="min-height:500px; margin-top:30px;">
+</section>
+<section id="where-have-heroes-and-heroines-come-from" class="level3">
+<h3 class="anchored" data-anchor-id="where-have-heroes-and-heroines-come-from">Where have heroes and heroines come from?</h3>
+<div style="min-height:500px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/o1imA/embed.js" charset="utf-8"></script>
 <noscript>
 <img src="https://datawrapper.dwcdn.net/o1imA/full.png" alt="">
 </noscript>
 </div>
-<div style="min-height:500px; margin-top:30px;">
+<div style="min-height:500px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/3gjEP/embed.js" charset="utf-8"></script>
 <noscript>
 <img src="https://datawrapper.dwcdn.net/3gjEP/full.png" alt="">
 </noscript>
 </div>
-<div style="min-height:500px; margin-top:30px;">
+<div style="min-height:500px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/U2Hdo/embed.js" charset="utf-8"></script>
 <noscript>
 <img src="https://datawrapper.dwcdn.net/U2Hdo/full.png" alt="">
 </noscript>
 </div>
+<div style="min-height:1082px; max-width: 600px; margin-top:30px">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/CzhDe/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/CzhDe/full.png" alt="">
+</noscript>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -771,7 +800,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 
