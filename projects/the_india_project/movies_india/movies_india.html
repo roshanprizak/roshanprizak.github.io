@@ -337,6 +337,8 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#pilot-age-gaps-for-major-heroes" id="toc-pilot-age-gaps-for-major-heroes" class="nav-link" data-scroll-target="#pilot-age-gaps-for-major-heroes">Pilot: age gaps for major heroes</a></li>
+  <li><a href="#hero-grid-age-gaps-for-each-hero" id="toc-hero-grid-age-gaps-for-each-hero" class="nav-link" data-scroll-target="#hero-grid-age-gaps-for-each-hero">Hero grid: age-gaps for each hero</a></li>
+  <li><a href="#heroine-grid-age-gaps-for-each-heroine" id="toc-heroine-grid-age-gaps-for-each-heroine" class="nav-link" data-scroll-target="#heroine-grid-age-gaps-for-each-heroine">Heroine grid: age-gaps for each heroine</a></li>
   <li><a href="#a-deeper-dive-into-telugu-cinema" id="toc-a-deeper-dive-into-telugu-cinema" class="nav-link" data-scroll-target="#a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</a>
   <ul class="collapse">
   <li><a href="#ages-and-age-gaps-over-the-years" id="toc-ages-and-age-gaps-over-the-years" class="nav-link" data-scroll-target="#ages-and-age-gaps-over-the-years">Ages and age gaps over the years</a></li>
@@ -356,11 +358,11 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The lead male actor and the lead female actor are important roles in a movie. In mainstream Indian movies, it has been noticed that the lead male actor is often a lot older compared to the lead female actor, but the ages of the characters they play in the movie are comparable. In this project, I want to explore such biases in mainstream Indian cinema.</p>
+<p>The lead male actor (the “hero”) and the lead female actor (the “heroine”) are important roles in a movie, and more so in Indian movies. In mainstream Indian movies, it has been noticed that the actor who plays the hero (I’ll interchangeably refer to the actor as lead male actor or hero, the context should make it clear) is often a lot older compared to the actor who plays the heroine, but the ages of the characters they play in the movie are comparable. Does this age gap exist across decades and in various regions of Indian cinema? What are the differences between the careers of heroes and heroines? How does marriage affec them?</p>
 </section>
 <section id="pilot-age-gaps-for-major-heroes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="pilot-age-gaps-for-major-heroes">Pilot: age gaps for major heroes</h2>
-<p>As a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few leading male actors (heroes) in mainstream Indian cinema, along with the ages of the lead male actor and the lead female actor in each movie.</p>
+<p>As a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few heroes in mainstream Indian cinema, along with the ages of the hero and the heroine in each movie.</p>
 <div class="column-body">
 <div class="grid text-center">
 <div class="g-col-12 g-col-md-6">
@@ -439,7 +441,23 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br> For all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. How has this changed over the years? How does marriage affect the careers of heroes and heroines?</p>
+<p><br></p>
+</section>
+<section id="hero-grid-age-gaps-for-each-hero" class="level2">
+<h2 class="anchored" data-anchor-id="hero-grid-age-gaps-for-each-hero">Hero grid: age-gaps for each hero</h2>
+<p>Click on a hero to view how his age and the heroines’ ages have been over the hero’s career:</p>
+<div id="heroes-section">
+
+</div>
+</section>
+<section id="heroine-grid-age-gaps-for-each-heroine" class="level2">
+<h2 class="anchored" data-anchor-id="heroine-grid-age-gaps-for-each-heroine">Heroine grid: age-gaps for each heroine</h2>
+<p>Click on a heroine to view how her age and the heroes’ ages have been over the heroine’s career:</p>
+<div id="heroines-section">
+
+</div>
+<p><br></p>
+<p>For all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. So how has this changed over the years? How does marriage affect the careers of heroes and heroines?</p>
 </section>
 <section id="a-deeper-dive-into-telugu-cinema" class="level2">
 <h2 class="anchored" data-anchor-id="a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</h2>
@@ -542,6 +560,8 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <img src="https://datawrapper.dwcdn.net/CzhDe/full.png" alt="">
 </noscript>
 </div>
+<script src="heroes.js"></script>
+<script src="heroines.js"></script>
 
 
 </section>
@@ -812,7 +832,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});</script>
 
 
 

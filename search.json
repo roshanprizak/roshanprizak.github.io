@@ -11,14 +11,28 @@
     "href": "projects/the_india_project/movies_india/movies_india.html",
     "title": "Indian movies and gender inequality",
     "section": "",
-    "text": "The lead male actor and the lead female actor are important roles in a movie. In mainstream Indian movies, it has been noticed that the lead male actor is often a lot older compared to the lead female actor, but the ages of the characters they play in the movie are comparable. In this project, I want to explore such biases in mainstream Indian cinema."
+    "text": "The lead male actor (the “hero”) and the lead female actor (the “heroine”) are important roles in a movie, and more so in Indian movies. In mainstream Indian movies, it has been noticed that the actor who plays the hero (I’ll interchangeably refer to the actor as lead male actor or hero, the context should make it clear) is often a lot older compared to the actor who plays the heroine, but the ages of the characters they play in the movie are comparable. Does this age gap exist across decades and in various regions of Indian cinema? What are the differences between the careers of heroes and heroines? How does marriage affec them?"
   },
   {
     "objectID": "projects/the_india_project/movies_india/movies_india.html#pilot-age-gaps-for-major-heroes",
     "href": "projects/the_india_project/movies_india/movies_india.html#pilot-age-gaps-for-major-heroes",
     "title": "Indian movies and gender inequality",
     "section": "Pilot: age gaps for major heroes",
-    "text": "Pilot: age gaps for major heroes\nAs a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few leading male actors (heroes) in mainstream Indian cinema, along with the ages of the lead male actor and the lead female actor in each movie.\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n For all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. How has this changed over the years? How does marriage affect the careers of heroes and heroines?"
+    "text": "Pilot: age gaps for major heroes\nAs a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few heroes in mainstream Indian cinema, along with the ages of the hero and the heroine in each movie.\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}"
+  },
+  {
+    "objectID": "projects/the_india_project/movies_india/movies_india.html#hero-grid-age-gaps-for-each-hero",
+    "href": "projects/the_india_project/movies_india/movies_india.html#hero-grid-age-gaps-for-each-hero",
+    "title": "Indian movies and gender inequality",
+    "section": "Hero grid: age-gaps for each hero",
+    "text": "Hero grid: age-gaps for each hero\nClick on a hero to view how his age and the heroines’ ages have been over the hero’s career:"
+  },
+  {
+    "objectID": "projects/the_india_project/movies_india/movies_india.html#heroine-grid-age-gaps-for-each-heroine",
+    "href": "projects/the_india_project/movies_india/movies_india.html#heroine-grid-age-gaps-for-each-heroine",
+    "title": "Indian movies and gender inequality",
+    "section": "Heroine grid: age-gaps for each heroine",
+    "text": "Heroine grid: age-gaps for each heroine\nClick on a heroine to view how her age and the heroes’ ages have been over the heroine’s career:\n\n\n\n\nFor all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. So how has this changed over the years? How does marriage affect the careers of heroes and heroines?"
   },
   {
     "objectID": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
