@@ -11,7 +11,7 @@ for (var i = 0; i < actors.length; i++) {
     
     html += `
     <a href="${figureImagePath}" class="lightbox hero-link" title="${actor}" data-gallery="my-gallery">
-        <img src="${avatarImagePath}" width="75px" height="75px" class="avatar">
+        <img src="${avatarImagePath}" width="60px" height="60px">
     </a>
     `;
 }

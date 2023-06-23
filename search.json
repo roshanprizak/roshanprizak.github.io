@@ -18,7 +18,14 @@
     "href": "projects/the_india_project/movies_india/movies_india.html#pilot-age-gaps-for-major-heroes",
     "title": "Indian movies and gender inequality",
     "section": "Pilot: age gaps for major heroes",
-    "text": "Pilot: age gaps for major heroes\nAs a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few heroes in mainstream Indian cinema, along with the ages of the hero and the heroine in each movie.\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}"
+    "text": "Pilot: age gaps for major heroes\nAs a starting point, I’ve scraped Wikipedia and other public sources and prepared a database of movies of a few heroes in mainstream Indian cinema, along with the ages of the hero and the heroine in each movie.\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. So how has this changed over the years? How does marriage affect the careers of heroes and heroines?"
+  },
+  {
+    "objectID": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
+    "href": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
+    "title": "Indian movies and gender inequality",
+    "section": "A deeper dive into Telugu cinema",
+    "text": "A deeper dive into Telugu cinema\nI chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects.\n\nAges and age gaps over the years"
   },
   {
     "objectID": "projects/the_india_project/movies_india/movies_india.html#hero-grid-age-gaps-for-each-hero",
@@ -32,14 +39,7 @@
     "href": "projects/the_india_project/movies_india/movies_india.html#heroine-grid-age-gaps-for-each-heroine",
     "title": "Indian movies and gender inequality",
     "section": "Heroine grid: age-gaps for each heroine",
-    "text": "Heroine grid: age-gaps for each heroine\nClick on a heroine to view how her age and the heroes’ ages have been over the heroine’s career:\n\n\n\n\nFor all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. So how has this changed over the years? How does marriage affect the careers of heroes and heroines?"
-  },
-  {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
-    "href": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
-    "title": "Indian movies and gender inequality",
-    "section": "A deeper dive into Telugu cinema",
-    "text": "A deeper dive into Telugu cinema\nI chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects.\n\nAges and age gaps over the years\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDebuts and exits\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCareers and marriages\n\n\n\n\n\n\n\n\nFemale-lead movies and genres\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhere have heroes and heroines come from?"
+    "text": "Heroine grid: age-gaps for each heroine\nClick on a heroine to view how her age and the heroes’ ages have been over the heroine’s career:\n\n\n\n\n\nDebuts and exits\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCareers and marriages\n\n\n\n\n\n\n\n\nFemale-lead movies and genres\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhere have heroes and heroines come from?"
   },
   {
     "objectID": "projects/the_india_project/car_prices_india/car_prices_india.html",
