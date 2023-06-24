@@ -337,18 +337,14 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#pilot-age-gaps-for-major-heroes" id="toc-pilot-age-gaps-for-major-heroes" class="nav-link" data-scroll-target="#pilot-age-gaps-for-major-heroes">Pilot: age gaps for major heroes</a></li>
-  <li><a href="#a-deeper-dive-into-telugu-cinema" id="toc-a-deeper-dive-into-telugu-cinema" class="nav-link" data-scroll-target="#a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</a>
-  <ul class="collapse">
+  <li><a href="#a-deeper-dive-into-telugu-cinema" id="toc-a-deeper-dive-into-telugu-cinema" class="nav-link" data-scroll-target="#a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</a></li>
   <li><a href="#ages-and-age-gaps-over-the-years" id="toc-ages-and-age-gaps-over-the-years" class="nav-link" data-scroll-target="#ages-and-age-gaps-over-the-years">Ages and age gaps over the years</a></li>
-  </ul></li>
   <li><a href="#hero-grid-age-gaps-for-each-hero" id="toc-hero-grid-age-gaps-for-each-hero" class="nav-link" data-scroll-target="#hero-grid-age-gaps-for-each-hero">Hero grid: age-gaps for each hero</a></li>
-  <li><a href="#heroine-grid-age-gaps-for-each-heroine" id="toc-heroine-grid-age-gaps-for-each-heroine" class="nav-link" data-scroll-target="#heroine-grid-age-gaps-for-each-heroine">Heroine grid: age-gaps for each heroine</a>
-  <ul class="collapse">
+  <li><a href="#heroine-grid-age-gaps-for-each-heroine" id="toc-heroine-grid-age-gaps-for-each-heroine" class="nav-link" data-scroll-target="#heroine-grid-age-gaps-for-each-heroine">Heroine grid: age-gaps for each heroine</a></li>
   <li><a href="#debuts-and-exits" id="toc-debuts-and-exits" class="nav-link" data-scroll-target="#debuts-and-exits">Debuts and exits</a></li>
   <li><a href="#careers-and-marriages" id="toc-careers-and-marriages" class="nav-link" data-scroll-target="#careers-and-marriages">Careers and marriages</a></li>
   <li><a href="#female-lead-films-and-genres" id="toc-female-lead-films-and-genres" class="nav-link" data-scroll-target="#female-lead-films-and-genres">Female-lead films and genres</a></li>
   <li><a href="#where-have-heroes-and-heroines-come-from" id="toc-where-have-heroes-and-heroines-come-from" class="nav-link" data-scroll-target="#where-have-heroes-and-heroines-come-from">Where have heroes and heroines come from?</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -449,9 +445,9 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </section>
 <section id="a-deeper-dive-into-telugu-cinema" class="level2">
 <h2 class="anchored" data-anchor-id="a-deeper-dive-into-telugu-cinema">A deeper dive into Telugu cinema</h2>
-<p>I chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects. First, I extracted information about Telugu films and their cast from 1940 till 2023 June from Wikipedia pages. For each Telugu film, I made an initial list of film title, year it got released and the main cast. I extracted this information from the yearly film list pages on Wikipedia. From this main cast list for each film, I identified the “hero” and the “heroine”.</p>
+<p>I chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects. First, I extracted information about Telugu films and their cast from 1940 till 2023 June from Wikipedia pages. For each Telugu film, I made an initial list of film title, year it got released and the main cast. I extracted this information from the yearly film list pages on Wikipedia. From this main cast list for each film, I identified the “hero” and the “heroine”. This requires one to infer the gender of each cast member. The way I did this is by looking at their Wikipedia pages if available (or by performing an automated search on DuckDuckGo if Wikipedia page is unavailable), and counting the number of occurrences of the words <em>actor, he, him, his</em> as compared to <em>actress, she, her</em>.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -460,19 +456,28 @@ Identifying the hero and the heroine of a film
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Identifying the hero and heroine of a film from such a main cast comes with some asssumptions and issues. The main assumption is make by default is that the first male cast member is the hero and the first female cast member is the heroine. However,</p>
-<ol type="a">
-<li>Many films have multiple heroes and heroines. In such cases, I only assign one hero and one heroine. Further the heroes and heroines can be “paired” in any combination. The cast order doesn’t inform us about which hero is paired with which heroine.</li>
-<li>The assumption that each film necessarily has a hero and a heroine itself doesn’t hold true for a few films.</li>
-<li>What should the relationship be between the hero and the heroine? Does it necessarily have to be a romantic one? Or does importance to the film’s plot take prominence over a romantic pairing of the potential hero and the potential heroine?</li>
-</ol>
+<p>Identifying the hero and heroine of a film from such a main cast comes with some asssumptions and issues. The main assumption is make by default is that <strong>the first male cast member is the hero</strong> and <strong>the first female cast member is the heroine</strong>. However,</p>
+<p>1.) <strong>Many films have multiple heroes and heroines.</strong></p>
+<p>In such cases, I only assign one hero and one heroine. Further the heroes and heroines can be “paired” in any combination. The cast order doesn’t inform us about which hero is paired with which heroine.</p>
+<p>For example, <em>సీతమ్మ వాకిట్లో సిరిమల్లె చెట్టు (Seethamma Vakitlo Sirimalle Chettu)</em> from 2013 has cast is listed as <strong>Mahesh Babu</strong>, <strong>Venkatesh</strong>, <strong>Anjali</strong>, <strong>Samantha</strong>, Prakash Raj, Jayasudha. Our method would identify <strong>Mahesh Babu</strong> as the hero and <strong>Anjali</strong> as the heroine, while <strong>Mahesh Babu</strong> and <strong>Samantha</strong> are paired together.</p>
+<p>2.) <strong>Some films don’t have a hero or a heroine.</strong></p>
+<p>The assumption that each film necessarily has a hero and a heroine itself doesn’t hold true for a few films. For example, <em>ఈనాడు (Eenadu)</em> from 2009 has <strong>Kamal Haasan</strong> and <strong>Venkatesh</strong> as the main cast, with no heroine credited.</p>
+<p>3.) <strong>What should the relationship be between the hero and the heroine?</strong></p>
+<p>Does relationship necessarily have to be a romantic one? Or does importance to the film’s plot take prominence over a romantic pairing of the potential hero and the potential heroine?</p>
+<p>Take <em>రుద్రమదేవి (Rudhramadevi)</em> from 2015 for example. Cast is listed as <strong>Anushka Shetty</strong>, <strong>Allu Arjun</strong>, <strong>Rana Daggubati</strong>. While our method would correctly identify <strong>Anushka Shetty</strong> as the heroine, <strong>Allu Arjun</strong> is identified as the hero while <strong>Rana Daggubati</strong> plays the character who romances Anushka Shetty.</p>
+<p>Another recent example is <em>Godfather (2022)</em> whose main cast is <strong>Chiranjeevi</strong>, <strong>Nayanthara</strong>, <strong>Salman Khan</strong>, <strong>Satya Dev</strong>. While <strong>Chiranjeevi</strong> is the hero, the heroine <strong>Nayanthara</strong> is not the hero’s romantic interest. In fact, the hero doesn’t romance anyone.</p>
+<p><strong>Our approach</strong></p>
+<p>The approach I take is the following. The first cast member is always the “lead” - it is mostly the hero, but sometimes the heroine. The other (heroine in cast the lead is the hero, otherwise the hero), is the next cast member of the opposite gender. In most cases, this covers both (a) the romantic hero-heroine pair, and (b) the non-romantic hero and heroine. Sometimes, the lead has a romantic interest in some other case member that is not the identified heroine/hero. I try to identify these cases individually and switch the heroine/hero so that in the presence of a romantic interest, the heroine/hero is not the first cast member of the opposite gender but someone else. Romantic interest takes priority over listed cast order. However, I don’t cover all of these films. However, these are only edge cases and do not dominate the bulk of Telugu movies. If you spot any film which you think ought to be corrected, I’m happy to take a look and make a change if necessary.</p>
 </div>
 </div>
 </div>
-<section id="ages-and-age-gaps-over-the-years" class="level3">
-<h3 class="anchored" data-anchor-id="ages-and-age-gaps-over-the-years">Ages and age gaps over the years</h3>
+</section>
+<section id="ages-and-age-gaps-over-the-years" class="level2">
+<h2 class="anchored" data-anchor-id="ages-and-age-gaps-over-the-years">Ages and age gaps over the years</h2>
+<p>Once the hero and heroine were identified, I extracted their birth years (along with their wedding years and place of birth if available) from their Wikipedia pages and from searches on DuckDuckGo and Google. An automated process that relies on DuckDuckGo search to extract this information is riddled with inaccuracies as (a) often there are many people who share similar names, or (b) the cast members are only credited with a short name/nickname that is ambiguous, or (c) the birth year on the internet is not reliable. Hence, I mainly relied on Wikipedia, but fell back to DuckDuckGo + manual curation for a handful of heroes and heroines who have starred in multiple films.</p>
+<p>Using the birth years, I calculated the ages of the hero and the heroine for each movie.</p>
 <div style="min-height:400px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/VymrI/embed.js" charset="utf-8"></script>
 <noscript>
@@ -485,6 +490,7 @@ Identifying the hero and the heroine of a film
 <img src="https://datawrapper.dwcdn.net/uNrVT/full.png" alt="">
 </noscript>
 </div>
+<p><br> Because of the issues I mentioned earlier, not all movies have both the hero’s age and the heroine’s age available. Here’s their availability over the years.</p>
 <div style="min-height:400px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/aA149/embed.js" charset="utf-8"></script>
 <noscript>
@@ -492,24 +498,22 @@ Identifying the hero and the heroine of a film
 </noscript>
 </div>
 </section>
-</section>
 <section id="hero-grid-age-gaps-for-each-hero" class="level2">
 <h2 class="anchored" data-anchor-id="hero-grid-age-gaps-for-each-hero">Hero grid: age-gaps for each hero</h2>
-<p>Click on a hero to view how his age and the heroines’ ages have been over the hero’s career:</p>
+<p>To make the visualization of this age-gap data easier, I made individual plots for each major hero/heroine showing the age-gap over their careers. Click on a hero to view his career age-gap trajectory:</p>
 <div id="heroes-section">
 
 </div>
-<p><br></p>
 </section>
 <section id="heroine-grid-age-gaps-for-each-heroine" class="level2">
 <h2 class="anchored" data-anchor-id="heroine-grid-age-gaps-for-each-heroine">Heroine grid: age-gaps for each heroine</h2>
-<p>Click on a heroine to view how her age and the heroes’ ages have been over the heroine’s career:</p>
+<p>Click on a heroine to view her career age-gap trajectory:</p>
 <div id="heroines-section">
 
 </div>
-<p><br></p>
-<section id="debuts-and-exits" class="level3">
-<h3 class="anchored" data-anchor-id="debuts-and-exits">Debuts and exits</h3>
+</section>
+<section id="debuts-and-exits" class="level2">
+<h2 class="anchored" data-anchor-id="debuts-and-exits">Debuts and exits</h2>
 <div style="min-height:1990px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/eJEed/embed.js" charset="utf-8"></script>
 <noscript>
@@ -535,8 +539,9 @@ Identifying the hero and the heroine of a film
 </noscript>
 </div>
 </section>
-<section id="careers-and-marriages" class="level3">
-<h3 class="anchored" data-anchor-id="careers-and-marriages">Careers and marriages</h3>
+<section id="careers-and-marriages" class="level2">
+<h2 class="anchored" data-anchor-id="careers-and-marriages">Careers and marriages</h2>
+<p>I only considered the year of first marriage in case an actor was married multiple times. Also, not knowing the marriage year doesn’t automatically mean that the actor is unmarried. So it is difficult to consider the careers of unmarried actors.</p>
 <div style="min-height:520px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/GkQk8/embed.js" charset="utf-8"></script>
 <noscript>
@@ -544,8 +549,9 @@ Identifying the hero and the heroine of a film
 </noscript>
 </div>
 </section>
-<section id="female-lead-films-and-genres" class="level3">
-<h3 class="anchored" data-anchor-id="female-lead-films-and-genres">Female-lead films and genres</h3>
+<section id="female-lead-films-and-genres" class="level2">
+<h2 class="anchored" data-anchor-id="female-lead-films-and-genres">Female-lead films and genres</h2>
+<p>For each year, I also checked what fraction of films have the first cast member as a female, meaning the heroine is credited before the hero. I’ve taken this as a sign that the film is a female-lead one. I also extracted the genres for each film from Wikipedia and IMDB whenever available.</p>
 <div style="min-height:580px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/Qah6K/embed.js" charset="utf-8"></script>
 <noscript>
@@ -559,8 +565,8 @@ Identifying the hero and the heroine of a film
 </noscript>
 </div>
 </section>
-<section id="where-have-heroes-and-heroines-come-from" class="level3">
-<h3 class="anchored" data-anchor-id="where-have-heroes-and-heroines-come-from">Where have heroes and heroines come from?</h3>
+<section id="where-have-heroes-and-heroines-come-from" class="level2">
+<h2 class="anchored" data-anchor-id="where-have-heroes-and-heroines-come-from">Where have heroes and heroines come from?</h2>
 <div style="min-height:500px; max-width: 600px; margin-top:30px;">
 <script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/o1imA/embed.js" charset="utf-8"></script>
 <noscript>
@@ -589,7 +595,6 @@ Identifying the hero and the heroine of a film
 <script src="heroines.js"></script>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -857,7 +862,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"openEffect":"zoom","descPosition":"bottom"});</script>
 
 
 
