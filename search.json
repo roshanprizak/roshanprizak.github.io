@@ -7,74 +7,130 @@
     "text": "First blog post. More to come. Watch this space."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html",
-    "href": "projects/the_india_project/movies_india/movies_india.html",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html",
+    "title": "Telugu films and gender inequality",
     "section": "",
     "text": "The lead male actor (the “hero”) and the lead female actor (the “heroine”) are important roles in a film, and more so in Indian films. In mainstream Indian films, it has been noticed that the actor who plays the hero (I’ll interchangeably refer to the actor as lead male actor or hero, the context should make it clear) is often a lot older compared to the actor who plays the heroine, but the ages of the characters they play in the film are comparable.\nDoes this age gap exist across decades and in various regions of Indian cinema? What are the differences between the careers of heroes and heroines? How does marriage affect them? In this project, I’ll delve into such issues and understand some aspects of gender inequalities in Indian cinema."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#pilot-age-gaps-for-major-heroes",
-    "href": "projects/the_india_project/movies_india/movies_india.html#pilot-age-gaps-for-major-heroes",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#pilot-age-gaps-for-major-heroes",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#pilot-age-gaps-for-major-heroes",
+    "title": "Telugu films and gender inequality",
     "section": "Pilot: age gaps for major heroes",
     "text": "Pilot: age gaps for major heroes\nAs a starting point, I had scraped Wikipedia and other public sources and prepared a database of films of a few heroes in mainstream Indian cinema, along with the ages of the hero and the heroine in each film. I also depict genres extracted from the film Wikipedia pages. Here are some of those.\n\n\n\n\n\n\n\n\n\n\nSelect an actor:\n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n  \n\n\n\n\n\n\nhero_names = [\n    'Aamir Khan', 'Mahesh Babu', 'Akshay Kumar'\n];\n\n// viewof input = Inputs.select(hero_names, {value: 'Aamir Khan', label: 'Choose lead male actor'})\n\nfunction displayImage(option) {\n  return `<a href=\"./hero_based_age_gap/${option}.png\" class=\"lightbox\" title=\"${option}\" data-gallery=\"my-gallery\">${option}</a>`\n  // return `<p><a href=\"hero_based_age_gap/${option}.png\" class=\"lightbox\" data-gallery=\"my-gallery\" title=\"Resolution writing as part of the October 2022 (online) session on “Energy Security &amp; Health”.\"><img class=\"img-fluid figure-img zoomable\" src=\"hero_based_age_gap/${option}.png\" width=\"100%\"></img></a></p>`;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor all the major heroes shown here, the age gaps between the hero and heroine increase with time, and are sometimes as large as 30 years. So how has this changed over the years? How does marriage affect the careers of heroes and heroines? I wanted to look at this more systematically and widely across time and space in India."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
-    "href": "projects/the_india_project/movies_india/movies_india.html#a-deeper-dive-into-telugu-cinema",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#a-deeper-dive-into-telugu-cinema",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#a-deeper-dive-into-telugu-cinema",
+    "title": "Telugu films and gender inequality",
     "section": "A deeper dive into Telugu cinema",
-    "text": "A deeper dive into Telugu cinema\nI chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects. First, I extracted information about Telugu films and their cast from 1940 till 2023 June from Wikipedia pages. For each Telugu film, I made an initial list of film title, year it got released and the main cast. I extracted this information from the yearly film list pages on Wikipedia. From this main cast list for each film, I identified the “hero” and the “heroine”. This requires one to infer the gender of each cast member. The way I did this is by looking at their Wikipedia pages if available (or by performing an automated search on DuckDuckGo if Wikipedia page is unavailable), and counting the number of occurrences of the words actor, he, him, his as compared to actress, she, her.\n\n\n\n\n\n\nIdentifying the hero and the heroine of a film\n\n\n\n\n\nIdentifying the hero and heroine of a film from such a main cast comes with some asssumptions and issues. The main assumption is make by default is that the first male cast member is the hero and the first female cast member is the heroine. However,\n1.) Many films have multiple heroes and heroines.\nIn such cases, I only assign one hero and one heroine. Further the heroes and heroines can be “paired” in any combination. The cast order doesn’t inform us about which hero is paired with which heroine.\nFor example, సీతమ్మ వాకిట్లో సిరిమల్లె చెట్టు (Seethamma Vakitlo Sirimalle Chettu) from 2013 has cast is listed as Mahesh Babu, Venkatesh, Anjali, Samantha, Prakash Raj, Jayasudha. Our method would identify Mahesh Babu as the hero and Anjali as the heroine, while Mahesh Babu and Samantha are paired together.\n2.) Some films don’t have a hero or a heroine.\nThe assumption that each film necessarily has a hero and a heroine itself doesn’t hold true for a few films. For example, ఈనాడు (Eenadu) from 2009 has Kamal Haasan and Venkatesh as the main cast, with no heroine credited.\n3.) What should the relationship be between the hero and the heroine?\nDoes relationship necessarily have to be a romantic one? Or does importance to the film’s plot take prominence over a romantic pairing of the potential hero and the potential heroine?\nTake రుద్రమదేవి (Rudhramadevi) from 2015 for example. Cast is listed as Anushka Shetty, Allu Arjun, Rana Daggubati. While our method would correctly identify Anushka Shetty as the heroine, Allu Arjun is identified as the hero while Rana Daggubati plays the character who romances Anushka Shetty.\nAnother recent example is Godfather (2022) whose main cast is Chiranjeevi, Nayanthara, Salman Khan, Satya Dev. While Chiranjeevi is the hero, the heroine Nayanthara is not the hero’s romantic interest. In fact, the hero doesn’t romance anyone.\nOur approach\nThe approach I take is the following. The first cast member is always the “lead” - it is mostly the hero, but sometimes the heroine. The other (heroine in cast the lead is the hero, otherwise the hero), is the next cast member of the opposite gender. In most cases, this covers both (a) the romantic hero-heroine pair, and (b) the non-romantic hero and heroine. Sometimes, the lead has a romantic interest in some other case member that is not the identified heroine/hero. I try to identify these cases individually and switch the heroine/hero so that in the presence of a romantic interest, the heroine/hero is not the first cast member of the opposite gender but someone else. Romantic interest takes priority over listed cast order. However, I don’t cover all of these films. However, these are only edge cases and do not dominate the bulk of Telugu movies. If you spot any film which you think ought to be corrected, I’m happy to take a look and make a change if necessary."
+    "text": "A deeper dive into Telugu cinema\nI chose to take a closer look at Telugu cinema and investigate age gaps, careers and other such aspects. First, I extracted information about Telugu films and their cast from 1940 till 2023 June from Wikipedia pages. For each Telugu film, I made an initial list of film title, year it got released and the main cast. I extracted this information from the yearly film list pages on Wikipedia. From this main cast list for each film, I identified the “hero” and the “heroine”. This requires one to infer the gender of each cast member. The way I did this is by looking at their Wikipedia pages if available (or by performing an automated search on DuckDuckGo if Wikipedia page is unavailable), and counting the number of occurrences of the words actor, he, him, his as compared to actress, she, her.\nFor a similar analysis of Bollywood films, go here.\n\n\n\n\n\n\nIdentifying the hero and the heroine of a film\n\n\n\n\n\nIdentifying the hero and heroine of a film from such a main cast comes with some asssumptions and issues. The main assumption is make by default is that the first male cast member is the hero and the first female cast member is the heroine. However,\n1.) Many films have multiple heroes and heroines.\nIn such cases, I only assign one hero and one heroine. Further the heroes and heroines can be “paired” in any combination. The cast order doesn’t inform us about which hero is paired with which heroine.\nFor example, సీతమ్మ వాకిట్లో సిరిమల్లె చెట్టు (Seethamma Vakitlo Sirimalle Chettu) from 2013 has cast is listed as Mahesh Babu, Venkatesh, Anjali, Samantha, Prakash Raj, Jayasudha. Our method would identify Mahesh Babu as the hero and Anjali as the heroine, while Mahesh Babu and Samantha are paired together.\n2.) Some films don’t have a hero or a heroine.\nThe assumption that each film necessarily has a hero and a heroine itself doesn’t hold true for a few films. For example, ఈనాడు (Eenadu) from 2009 has Kamal Haasan and Venkatesh as the main cast, with no heroine credited.\n3.) What should the relationship be between the hero and the heroine?\nDoes relationship necessarily have to be a romantic one? Or does importance to the film’s plot take prominence over a romantic pairing of the potential hero and the potential heroine?\nTake రుద్రమదేవి (Rudhramadevi) from 2015 for example. Cast is listed as Anushka Shetty, Allu Arjun, Rana Daggubati. While our method would correctly identify Anushka Shetty as the heroine, Allu Arjun is identified as the hero while Rana Daggubati plays the character who romances Anushka Shetty.\nAnother recent example is Godfather (2022) whose main cast is Chiranjeevi, Nayanthara, Salman Khan, Satya Dev. While Chiranjeevi is the hero, the heroine Nayanthara is not the hero’s romantic interest. In fact, the hero doesn’t romance anyone.\nMy approach\nThe approach I took is the following. The first cast member is always the “lead” - it is mostly the hero, but sometimes the heroine. The other (heroine in cast the lead is the hero, otherwise the hero), is the next cast member of the opposite gender. In most cases, this covers both (a) the romantic hero-heroine pair, and (b) the non-romantic hero and heroine. Sometimes, the lead has a romantic interest in some other case member that is not the identified heroine/hero. I identified a few of these cases individually and switched the heroine/hero so that in the presence of a romantic interest, the heroine/hero is not the first cast member of the opposite gender but someone else. Romantic interest takes priority over listed cast order. However, I didn’t cover all of these films. These are only edge cases and do not dominate the bulk of Telugu films. In any case, I created two datasets: (a) High+ confidence dataset, in which the hero and the heroine are unambiguously the first and second cast members and (b) Low+ confidence dataset, in which there is some ambiguity in the hero and the heroine because of the cast order. The High+ confidence dataset will exclude multistarrer movies as identifying the hero (or the heroine) difficult. While the overall statistics change only very little between thye datasets, you can still switch between the datasets here.\n High+ confidence dataset Low+ confidence dataset"
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#ages-and-age-gaps-over-the-years",
-    "href": "projects/the_india_project/movies_india/movies_india.html#ages-and-age-gaps-over-the-years",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#ages-and-age-gaps-over-the-years",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#ages-and-age-gaps-over-the-years",
+    "title": "Telugu films and gender inequality",
     "section": "Ages and age gaps over the years",
-    "text": "Ages and age gaps over the years\nOnce the hero and heroine were identified, I extracted their birth years (along with their wedding years and place of birth if available) from their Wikipedia pages and from searches on DuckDuckGo and Google. An automated process that relies on DuckDuckGo search to extract this information is riddled with inaccuracies as (a) often there are many people who share similar names, or (b) the cast members are only credited with a short name/nickname that is ambiguous, or (c) the birth year on the internet is not reliable. Hence, I mainly relied on Wikipedia, but fell back to DuckDuckGo + manual curation for a handful of heroes and heroines who have starred in multiple films.\nUsing the birth years, I calculated the ages of the hero and the heroine for each movie.\n\n\n\n\n\n\n\n\n\n\n\n\n Because of the issues I mentioned earlier, not all movies have both the hero’s age and the heroine’s age available. Here’s their availability over the years."
+    "text": "Ages and age gaps over the years\nOnce the hero and heroine were identified, I extracted their birth years (along with their wedding years and place of birth if available) from their Wikipedia pages and from searches on DuckDuckGo and Google. An automated process that relies on DuckDuckGo search to extract this information is riddled with inaccuracies as (a) often there are many people who share similar names, or (b) the cast members are only credited with a short name/nickname that is ambiguous, or (c) the birth year on the internet is not reliable. Hence, I mainly relied on Wikipedia, but fell back to DuckDuckGo + manual curation for a handful of heroes and heroines who have starred in multiple films.\nUsing the birth years, I calculated the ages of the hero and the heroine for each movie.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Because of the issues I mentioned earlier, not all movies have both the hero’s age and the heroine’s age available. Here’s their availability over the years."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#hero-grid-age-gaps-for-each-hero",
-    "href": "projects/the_india_project/movies_india/movies_india.html#hero-grid-age-gaps-for-each-hero",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#hero-grid-age-gaps-for-each-hero",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#hero-grid-age-gaps-for-each-hero",
+    "title": "Telugu films and gender inequality",
     "section": "Hero grid: age-gaps for each hero",
     "text": "Hero grid: age-gaps for each hero\nTo make the visualization of this age-gap data easier, I made individual plots for each major hero/heroine showing the age-gap over their careers. Click on a hero to view his career age-gap trajectory:"
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#heroine-grid-age-gaps-for-each-heroine",
-    "href": "projects/the_india_project/movies_india/movies_india.html#heroine-grid-age-gaps-for-each-heroine",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#heroine-grid-age-gaps-for-each-heroine",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#heroine-grid-age-gaps-for-each-heroine",
+    "title": "Telugu films and gender inequality",
     "section": "Heroine grid: age-gaps for each heroine",
     "text": "Heroine grid: age-gaps for each heroine\nClick on a heroine to view her career age-gap trajectory:"
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#debuts-and-exits",
-    "href": "projects/the_india_project/movies_india/movies_india.html#debuts-and-exits",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#debuts-and-exits",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#debuts-and-exits",
+    "title": "Telugu films and gender inequality",
     "section": "Debuts and exits",
     "text": "Debuts and exits"
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#careers-and-marriages",
-    "href": "projects/the_india_project/movies_india/movies_india.html#careers-and-marriages",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#careers-and-marriages",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#careers-and-marriages",
+    "title": "Telugu films and gender inequality",
     "section": "Careers and marriages",
     "text": "Careers and marriages\nI only considered the year of first marriage in case an actor was married multiple times. Also, not knowing the marriage year doesn’t automatically mean that the actor is unmarried. So it is difficult to consider the careers of unmarried actors."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#female-lead-films-and-genres",
-    "href": "projects/the_india_project/movies_india/movies_india.html#female-lead-films-and-genres",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#female-lead-films-and-genres",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#female-lead-films-and-genres",
+    "title": "Telugu films and gender inequality",
     "section": "Female-lead films and genres",
     "text": "Female-lead films and genres\nFor each year, I also checked what fraction of films have the first cast member as a female, meaning the heroine is credited before the hero. I’ve taken this as a sign that the film is a female-lead one. I also extracted the genres for each film from Wikipedia and IMDB whenever available."
   },
   {
-    "objectID": "projects/the_india_project/movies_india/movies_india.html#where-have-heroes-and-heroines-come-from",
-    "href": "projects/the_india_project/movies_india/movies_india.html#where-have-heroes-and-heroines-come-from",
-    "title": "Indian films and gender inequality",
+    "objectID": "projects/the_india_project/telugu_movies/telugu_movies.html#where-have-heroes-and-heroines-come-from",
+    "href": "projects/the_india_project/telugu_movies/telugu_movies.html#where-have-heroes-and-heroines-come-from",
+    "title": "Telugu films and gender inequality",
     "section": "Where have heroes and heroines come from?",
     "text": "Where have heroes and heroines come from?"
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html",
+    "title": "Bollywood films and gender inequality",
+    "section": "",
+    "text": "The lead male actor (the “hero”) and the lead female actor (the “heroine”) are important roles in a film, and more so in Indian films. In mainstream Indian films, it has been noticed that the actor who plays the hero (I’ll interchangeably refer to the actor as lead male actor or hero, the context should make it clear) is often a lot older compared to the actor who plays the heroine, but the ages of the characters they play in the film are comparable.\nDoes this age gap exist across decades and in various regions of Indian cinema? What are the differences between the careers of heroes and heroines? How does marriage affect them? In this project, I’ll delve into such issues and understand some aspects of gender inequalities in Indian cinema."
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#a-deeper-dive-into-bollywood",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#a-deeper-dive-into-bollywood",
+    "title": "Bollywood films and gender inequality",
+    "section": "A deeper dive into Bollywood",
+    "text": "A deeper dive into Bollywood\nIn this project, I consider Bollywood and investigate age gaps, careers and other such aspects. First, I extracted information about Hindi films and their cast from 1940 till 2023 June from Wikipedia pages. For each Hindi film, I made an initial list of film title, year it got released and the main cast. I extracted this information from the yearly film list pages on Wikipedia. From this main cast list for each film, I identified the “hero” and the “heroine”. This requires one to infer the gender of each cast member. The way I did this is by looking at their Wikipedia pages if available (or by performing an automated search on DuckDuckGo if Wikipedia page is unavailable), and counting the number of occurrences of the words actor, he, him, his as compared to actress, she, her.\nFor a similar analysis of Telugu films, go here.\n\n\n\n\n\n\nIdentifying the hero and the heroine of a film\n\n\n\n\n\nIdentifying the hero and heroine of a film from such a main cast comes with some asssumptions and issues. The main assumption is make by default is that the first male cast member is the hero and the first female cast member is the heroine. However,\n1.) Many films have multiple heroes and heroines.\nIn such cases, I only assign one hero and one heroine. Further the heroes and heroines can be “paired” in any combination. The cast order doesn’t inform us about which hero is paired with which heroine.\nFor example, दृश्यम 2 (Drishyam) from 2022 has cast is listed as Ajay Devgn, Akshaye Khanna, Tabu, Shriya Saran. Our method would identify Ajay Devgn as the hero and Tabu as the heroine, while Ajay Devgn and Shriya Saran are paired together.\n2.) Some films don’t have a hero or a heroine.\nThe assumption that each film necessarily has a hero and a heroine itself doesn’t hold true for a few films. For example, An Action Hero from 2022 has Ayushmann Khurrana and Jaideep Ahlawat as the main cast, with no heroine credited. Jalsa from 2022 has Vidya Balan and Shefali Shah in the lead roles, with no hero credited.\n3.) What should the relationship be between the hero and the heroine?\nDoes relationship necessarily have to be a romantic one? Or does importance to the film’s plot take prominence over a romantic pairing of the potential hero and the potential heroine?\nTake Pink from 2016 for example. Amitabh Bachchan and Taapsee Pannu are (correctly) identified as the hero and the heroine, but they don’t share a romantic relationship.\nMy approach\nThe approach I took is the following. The first cast member is always the “lead” - it is mostly the hero, but sometimes the heroine. The other (heroine in cast the lead is the hero, otherwise the hero), is the next cast member of the opposite gender. In most cases, this covers both (a) the romantic hero-heroine pair, and (b) the non-romantic hero and heroine. Sometimes, the lead has a romantic interest in some other case member that is not the identified heroine/hero. To tackle such ambiguities, I created two datasets: (a) High+ confidence dataset, in which the hero and the heroine are unambiguously the first and second cast members and (b) Low+ confidence dataset, in which there is some ambiguity in the hero and the heroine because of the cast order. The High+ confidence dataset will exclude multistarrer movies as identifying the hero (or the heroine) difficult. While the overall statistics change only very little between thye datasets, you can still switch between the datasets here.\n High+ confidence dataset Low+ confidence dataset"
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#ages-and-age-gaps-over-the-years",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#ages-and-age-gaps-over-the-years",
+    "title": "Bollywood films and gender inequality",
+    "section": "Ages and age gaps over the years",
+    "text": "Ages and age gaps over the years\nOnce the hero and heroine were identified, I extracted their birth years (along with their wedding years and place of birth if available) from their Wikipedia pages and from searches on DuckDuckGo and Google. An automated process that relies on DuckDuckGo search to extract this information is riddled with inaccuracies as (a) often there are many people who share similar names, or (b) the cast members are only credited with a short name/nickname that is ambiguous, or (c) the birth year on the internet is not reliable. Hence, I mainly relied on Wikipedia, but fell back to DuckDuckGo + manual curation for a handful of heroes and heroines who have starred in multiple films.\nUsing the birth years, I calculated the ages of the hero and the heroine for each movie.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Because of the issues I mentioned earlier, not all movies have both the hero’s age and the heroine’s age available. Here’s their availability over the years."
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#hero-grid-age-gaps-for-each-hero",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#hero-grid-age-gaps-for-each-hero",
+    "title": "Bollywood films and gender inequality",
+    "section": "Hero grid: age-gaps for each hero",
+    "text": "Hero grid: age-gaps for each hero\nTo make the visualization of this age-gap data easier, I made individual plots for each major hero/heroine showing the age-gap over their careers. Click on a hero to view his career age-gap trajectory:"
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#heroine-grid-age-gaps-for-each-heroine",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#heroine-grid-age-gaps-for-each-heroine",
+    "title": "Bollywood films and gender inequality",
+    "section": "Heroine grid: age-gaps for each heroine",
+    "text": "Heroine grid: age-gaps for each heroine\nClick on a heroine to view her career age-gap trajectory:"
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#debuts-and-exits",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#debuts-and-exits",
+    "title": "Bollywood films and gender inequality",
+    "section": "Debuts and exits",
+    "text": "Debuts and exits"
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#careers-and-marriages",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#careers-and-marriages",
+    "title": "Bollywood films and gender inequality",
+    "section": "Careers and marriages",
+    "text": "Careers and marriages\nI only considered the year of first marriage in case an actor was married multiple times. Also, not knowing the marriage year doesn’t automatically mean that the actor is unmarried. So it is difficult to consider the careers of unmarried actors."
+  },
+  {
+    "objectID": "projects/the_india_project/hindi_movies/hindi_movies.html#female-lead-films-and-genres",
+    "href": "projects/the_india_project/hindi_movies/hindi_movies.html#female-lead-films-and-genres",
+    "title": "Bollywood films and gender inequality",
+    "section": "Female-lead films and genres",
+    "text": "Female-lead films and genres\nFor each year, I also checked what fraction of films have the first cast member as a female, meaning the heroine is credited before the hero. I’ve taken this as a sign that the film is a female-lead one."
   },
   {
     "objectID": "projects/the_india_project/car_prices_india/car_prices_india.html",
@@ -109,7 +165,7 @@
     "href": "projects/the_india_project/the_india_project.html",
     "title": "The India Project",
     "section": "",
-    "text": "Explore various aspects of movies like actor-actress age gaps.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse various data on cattle census, milk and meat production and herd models to depict possible lives of individual animals.\nComing soon\n\n\n\n\nUsing NLP techniques, uncover patterns behind the questions and answers in the Question Hour of the Lok Sabha and Rajya Sabha sessions in India.\nComing soon\n\n\n\n\nComing soon"
+    "text": "Actor-actress age gaps, career and marriage, female-lead films.\nTelugu movies  Hindi movies\n\n\n\n\n\n\n\n\n\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse various data on cattle census, milk and meat production and herd models to depict possible lives of individual animals.\nComing soon\n\n\n\n\nUsing NLP techniques, uncover patterns behind the questions and answers in the Question Hour of the Lok Sabha and Rajya Sabha sessions in India.\nComing soon\n\n\n\n\nComing soon"
   },
   {
     "objectID": "projects/the_vienna_project/the_vienna_project.html",
@@ -256,14 +312,14 @@
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "A closer look into the resolutions of the World Health Assembly\n\n\n\nData science\n\n\nHealth\n\n\n\nUsing NLP techniques, network analysis and other data science tools, uncover patterns behind the resolutions adopted by the sessions of the World Health Assembly.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBatter strategies and their impacts in the IPL\n\n\n\nData science\n\n\nCricket\n\n\n\nSpend time or hit out? How have different strategies affected teams’ winning chances?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow affordable are cars with 6+ airbags?\n\n\n\nData science\n\n\nIndia\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow close is public transport in Vienna?\n\n\n\nData science\n\n\nVienna\n\n\n\nEvaluating and visualizing accessibility of Vienna’s public transport in various districts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndian films and gender inequality\n\n\n\nData science\n\n\nIndia\n\n\n\nExplore various aspects of films like actor-actress age gaps.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "A closer look into the resolutions of the World Health Assembly\n\n\n\nData science\n\n\nHealth\n\n\n\nUsing NLP techniques, network analysis and other data science tools, uncover patterns behind the resolutions adopted by the sessions of the World Health Assembly.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBatter strategies and their impacts in the IPL\n\n\n\nData science\n\n\nCricket\n\n\n\nSpend time or hit out? How have different strategies affected teams’ winning chances?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nBollywood films and gender inequality\n\n\n\nData science\n\n\nIndia\n\n\n\nActor-actress age gaps, career and marriage, female-lead films, genres.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow affordable are cars with 6+ airbags?\n\n\n\nData science\n\n\nIndia\n\n\n\nA quick look at new and used cars available in the Indian market in September 2022 and June 2023.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow close is public transport in Vienna?\n\n\n\nData science\n\n\nVienna\n\n\n\nEvaluating and visualizing accessibility of Vienna’s public transport in various districts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTelugu films and gender inequality\n\n\n\nData science\n\n\nIndia\n\n\n\nActor-actress age gaps, career and marriage, female-lead films, genres, birthplaces of heroes and heroines.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Hi! I’m  Roshan Prizak!",
     "section": "",
-    "text": "I enjoy problem-solving, finding connections between seemingly unrelated ideas, explaining complex ideas by “distilling” them down into simpler ones, and figuring out quantitative approaches to tackle questions that, on first look, seem to evade quantification.\n\nMore ..\n\nIf you want to quickly check out my ideas and projects on the following themes, check out:\ndata science | cricket | the india project | the vienna project | health\n\nNew projects!\n\n\n\n\n\n\n\n\n\n\n\nA closer look into the resolutions of the World Health Assembly\nUsing NLP techniques, network analysis and other data science tools, uncover patterns behind the resolutions adopted by the sessions of the World Health Assembly.\nRead more\n\n\n\n\n\n\n\n\n\n\n\nHow close is public transport in Vienna?\nEvaluating and visualizing accessibility of Vienna’s public transport in various districts.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndian movies and gender inequality\nExplore various aspects of movies like actor-actress age gaps.\nRead more\n\n\n\n\n\n\n\n\n\n\n\nBatter strategies and their impacts in the IPL\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nRead more"
+    "text": "I enjoy problem-solving, finding connections between seemingly unrelated ideas, explaining complex ideas by “distilling” them down into simpler ones, and figuring out quantitative approaches to tackle questions that, on first look, seem to evade quantification.\n\nMore ..\n\nIf you want to quickly check out my ideas and projects on the following themes, check out:\ndata science | cricket | the india project | the vienna project | health\n\nNew projects!\n\n\n\n\n\n\n\n\n\n\n\nA closer look into the resolutions of the World Health Assembly\nUsing NLP techniques, network analysis and other data science tools, uncover patterns behind the resolutions adopted by the sessions of the World Health Assembly.\nRead more\n\n\n\n\n\n\n\n\n\n\n\nHow close is public transport in Vienna?\nEvaluating and visualizing accessibility of Vienna’s public transport in various districts.\nRead more\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIndian films and gender inequality\nActor-actress age gaps, career and marriage, female-lead films, genres, birthplaces of heroes and heroines.\nTelugu movies\nHindi movies\n\n\n\n\n\n\n\n\n\n\n\nBatter strategies and their impacts in the IPL\nSpend time or hit out? How have different strategies affected teams’ winning chances?\nRead more"
   },
   {
     "objectID": "about.html",
