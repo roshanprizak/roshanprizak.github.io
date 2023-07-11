@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Understanding Vienna through data.">
+<meta name="description" content="Dissecting player impacts on the match outcomes by using the win probability index published by ESPNCricinfo.">
 
-<title>Roshan Prizak - The Vienna Project</title>
+<title>Roshan Prizak - How have different IPL players contributed to their team’s winning chances?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,24 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +75,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -82,7 +85,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title"><strong>Roshan</strong> Prizak</span>
     </a>
   </div>
@@ -109,31 +112,31 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../../about.html">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../projects.html" aria-current="page">
+    <a class="nav-link active" href="../../../projects.html" aria-current="page">
  <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/cricket_analytics/cricket_analytics.html">
+    <a class="nav-link" href="../../../projects/cricket_analytics/cricket_analytics.html">
  <span class="menu-text">Cricket</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/the_india_project/the_india_project.html">
+    <a class="nav-link" href="../../../projects/the_india_project/the_india_project.html">
  <span class="menu-text">The India Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/the_vienna_project/the_vienna_project.html">
+    <a class="nav-link" href="../../../projects/the_vienna_project/the_vienna_project.html">
  <span class="menu-text">The Vienna Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/health/health.html">
+    <a class="nav-link" href="../../../projects/health/health.html">
  <span class="menu-text">Health</span></a>
   </li>  
 </ul>
@@ -146,7 +149,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">The Vienna Project</h1>
+      <h1 class="quarto-secondary-nav-title">How have different IPL players contributed to their team’s winning chances?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -157,14 +160,15 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">The Vienna Project</h1>
+      <h1 class="title d-none d-lg-block">How have different IPL players contributed to their team’s winning chances?</h1>
                   <div>
         <div class="description">
-          Understanding Vienna through data.
+          Dissecting player impacts on the match outcomes by using the win probability index published by ESPNCricinfo.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">Data science</div>
+                <div class="quarto-category">Cricket</div>
               </div>
                   </div>
   </div>
@@ -185,13 +189,13 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects.html" class="sidebar-item-text sidebar-link">Projects Overview</a>
+  <a href="../../../projects.html" class="sidebar-item-text sidebar-link">Projects Overview</a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../projects/health/health.html" class="sidebar-item-text sidebar-link">Health</a>
+            <a href="../../../projects/health/health.html" class="sidebar-item-text sidebar-link">Health</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -199,7 +203,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/health/wha_resolutions/analyze_keywords.html" class="sidebar-item-text sidebar-link">WHA resolutions</a>
+  <a href="../../../projects/health/wha_resolutions/analyze_keywords.html" class="sidebar-item-text sidebar-link">WHA resolutions</a>
   </div>
 </li>
       </ul>
@@ -207,7 +211,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../projects/the_vienna_project/the_vienna_project.html" class="sidebar-item-text sidebar-link active">The Vienna Project</a>
+            <a href="../../../projects/the_vienna_project/the_vienna_project.html" class="sidebar-item-text sidebar-link">The Vienna Project</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -215,7 +219,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html" class="sidebar-item-text sidebar-link">Public transport access</a>
+  <a href="../../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html" class="sidebar-item-text sidebar-link">Public transport access</a>
   </div>
 </li>
       </ul>
@@ -223,7 +227,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../projects/the_india_project/the_india_project.html" class="sidebar-item-text sidebar-link">The India Project</a>
+            <a href="../../../projects/the_india_project/the_india_project.html" class="sidebar-item-text sidebar-link">The India Project</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -231,17 +235,17 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/the_india_project/car_prices_india/car_prices_india.html" class="sidebar-item-text sidebar-link">Cars &amp; airbags</a>
+  <a href="../../../projects/the_india_project/car_prices_india/car_prices_india.html" class="sidebar-item-text sidebar-link">Cars &amp; airbags</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/the_india_project/telugu_movies/telugu_movies.html" class="sidebar-item-text sidebar-link">Telugu Movies</a>
+  <a href="../../../projects/the_india_project/telugu_movies/telugu_movies.html" class="sidebar-item-text sidebar-link">Telugu Movies</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/the_india_project/hindi_movies/hindi_movies.html" class="sidebar-item-text sidebar-link">Hindi Movies</a>
+  <a href="../../../projects/the_india_project/hindi_movies/hindi_movies.html" class="sidebar-item-text sidebar-link">Hindi Movies</a>
   </div>
 </li>
       </ul>
@@ -249,7 +253,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../projects/cricket_analytics/cricket_analytics.html" class="sidebar-item-text sidebar-link">Cricket Analytics</a>
+            <a href="../../../projects/cricket_analytics/cricket_analytics.html" class="sidebar-item-text sidebar-link">Cricket Analytics</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -257,12 +261,12 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html" class="sidebar-item-text sidebar-link">Player impact analysis</a>
+  <a href="../../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html" class="sidebar-item-text sidebar-link active">Player impact analysis</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../projects/cricket_analytics/ipl_batters_strategies/ipl_batters_strategies.html" class="sidebar-item-text sidebar-link">IPL batter strategies</a>
+  <a href="../../../projects/cricket_analytics/ipl_batters_strategies/ipl_batters_strategies.html" class="sidebar-item-text sidebar-link">IPL batter strategies</a>
   </div>
 </li>
       </ul>
@@ -276,7 +280,12 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#some-projects" id="toc-some-projects" class="nav-link active" data-scroll-target="#some-projects">Some projects</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#batters-contribution-per-match" id="toc-batters-contribution-per-match" class="nav-link" data-scroll-target="#batters-contribution-per-match">Batters’ contribution per match</a></li>
+  <li><a href="#batters-table" id="toc-batters-table" class="nav-link" data-scroll-target="#batters-table">Batters table</a></li>
+  <li><a href="#bowlers-contribution-per-match" id="toc-bowlers-contribution-per-match" class="nav-link" data-scroll-target="#bowlers-contribution-per-match">Bowlers’ contribution per match</a></li>
+  <li><a href="#bowlers-table" id="toc-bowlers-table" class="nav-link" data-scroll-target="#bowlers-table">Bowlers table</a></li>
+  <li><a href="#virat-kohli" id="toc-virat-kohli" class="nav-link" data-scroll-target="#virat-kohli">Virat Kohli</a></li>
   </ul>
 </nav>
     </div>
@@ -286,43 +295,63 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 
 
 
-<section id="some-projects" class="level2">
-<h2 class="anchored" data-anchor-id="some-projects">Some projects</h2>
-<p><br></p>
-<div class="grid" style="padding-top:15px">
-<div class="g-col-md-4 g-col-12 text-center desktop-only">
-<div class="border">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html"><img src="closest_public_transport/thumbnail.png" class="img-fluid figure-img" data-padding-top="10px"></a></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="how-close-is-public-transport-in-vienna" class="level4 g-col-md-8 g-col-12">
-<h4 class="anchored" data-anchor-id="how-close-is-public-transport-in-vienna"><strong>How close is public transport in Vienna?</strong></h4>
-<p><em>Evaluating accessibility of Vienna’s public transport in different parts of the city.</em><br>
-<a href="../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html">Read more</a></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>ESPNCricinfo has published win probabilities after every ball bowled in each match of the IPL. This information, together with ball-by-ball information on the batter identity, bowler identity, ball events (which over, which ball, runs scored, wicket taken?) and other relevant information, opens up the possibility of assessing each batter’s and each bowler’s contribution to their team’s winning chances in each IPL match. This project starts to dig in that direction.</p>
+<p>Some questions we’ll probe here are:</p>
+<ol type="1">
+<li>Which batters and bowlers (players) have contributed the most to their team’s winning chances over the years?</li>
+<li>Which players have contributed significantly higher in wins compared to losses? Which players have contributed equally in all matches independent of the outome?</li>
+<li>How does the batters’ and bowlers’ contribution change with match scenarios - over number, ball number, wickets fell, bowler type, setting vs chasing, wagon zone?</li>
+<li>What does a typical innings look like for each batter?</li>
+</ol>
 </section>
-<div class="g-col-md-4 g-col-12 text-center mobile-only">
-<div class="border">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html"><img src="closest_public_transport/thumbnail.png" class="img-fluid figure-img" data-padding-top="10px"></a></p>
-</figure>
+<section id="batters-contribution-per-match" class="level2">
+<h2 class="anchored" data-anchor-id="batters-contribution-per-match">Batters’ contribution per match</h2>
+<div style="min-height:3104px; max-width: 600px; margin-top:30px;">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/9kUPQ/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/9kUPQ/full.png" alt="">
+</noscript>
 </div>
+</section>
+<section id="batters-table" class="level2">
+<h2 class="anchored" data-anchor-id="batters-table">Batters table</h2>
+<div style="min-height:838px; max-width: 600px; margin-top:30px;">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/DMXAC/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/DMXAC/full.png" alt="">
+</noscript>
 </div>
+</section>
+<section id="bowlers-contribution-per-match" class="level2">
+<h2 class="anchored" data-anchor-id="bowlers-contribution-per-match">Bowlers’ contribution per match</h2>
+<div style="min-height:3273px; max-width: 600px; margin-top:30px;">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/4BDbX/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/4BDbX/full.png" alt="">
+</noscript>
 </div>
+</section>
+<section id="bowlers-table" class="level2">
+<h2 class="anchored" data-anchor-id="bowlers-table">Bowlers table</h2>
+<div style="min-height:838px; max-width: 600px; margin-top:30px;">
+<script type="text/javascript" defer="" src="https://datawrapper.dwcdn.net/YYfoW/embed.js" charset="utf-8"></script>
+<noscript>
+<img src="https://datawrapper.dwcdn.net/YYfoW/full.png" alt="">
+</noscript>
 </div>
-<hr>
-<section id="is-viennas-public-transport-really-the-best" class="level4">
-<h4 class="anchored" data-anchor-id="is-viennas-public-transport-really-the-best"><strong>Is Vienna’s public transport <em>really</em> the best?</strong></h4>
-<p><em>Evaluating Vienna’s public transport and comparisons with other cities.</em></p>
-<p>Come up with a framework that incorporates different metrics of evaluating public transport - for instance, connectivity, reliability, robustness, cost-effectiveness, last-mile connectivity, and use them to analyze the “goodness” of public transport in Vienna and other cities around the world.</p>
-<p><em>Coming soon</em></p>
+</section>
+<section id="virat-kohli" class="level2">
+<h2 class="anchored" data-anchor-id="virat-kohli">Virat Kohli</h2>
+<p>I will put up profiles of individual batters and bowlers here. As a start, here’s Virat Kohli.</p>
+<p><strong>Cumulative win probability vs balls faced in innings</strong> <a href="player_plots/Virat Kohli Balls Faced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="player_plots/Virat Kohli Balls Faced.png" class="zoomable img-fluid"></a></p>
+<p><strong>Cumulative win probability vs balls faced in innings grouped by setting and chasing</strong> <a href="player_plots/Virat Kohli Setter Chaser.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="player_plots/Virat Kohli Setter Chaser.png" class="zoomable img-fluid"></a></p>
+<p><strong>Average win probability contribution per bowler type</strong> <a href="player_plots/Virat Kohli Bowler Style.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="player_plots/Virat Kohli Bowler Style.png" class="zoomable img-fluid"></a></p>
+<p><strong>Average win probability contribution per over number</strong> <a href="player_plots/Virat Kohli Over.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="player_plots/Virat Kohli Over.png" class="zoomable img-fluid"></a></p>
+<p><strong>Average win probability contribution per ball in the over</strong> <a href="player_plots/Virat Kohli Ball In Over.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="player_plots/Virat Kohli Ball In Over.png" class="zoomable img-fluid"></a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -580,6 +609,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":true,"closeEffect":"zoom"});</script>
 
 
 

@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Use cricket data to obtain novel insights.">
+<meta name="description" content="Translate qualitative questions about player strategies, performances, umpire biases, team predictions and everything else cricket into rigorous quantitative insights and visualize the findings">
 
 <title>Roshan Prizak - Cricket Analytics</title>
 <style>
@@ -160,14 +160,12 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <h1 class="title d-none d-lg-block">Cricket Analytics</h1>
                   <div>
         <div class="description">
-          Use cricket data to obtain novel insights.
+          Translate qualitative questions about player strategies, performances, umpire biases, team predictions and everything else cricket into rigorous quantitative insights and visualize the findings
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">Data science</div>
                 <div class="quarto-category">Cricket</div>
-                <div class="quarto-category">In-progress</div>
-                <div class="quarto-category">Ideation</div>
               </div>
                   </div>
   </div>
@@ -260,6 +258,11 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html" class="sidebar-item-text sidebar-link">Player impact analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../projects/cricket_analytics/ipl_batters_strategies/ipl_batters_strategies.html" class="sidebar-item-text sidebar-link">IPL batter strategies</a>
   </div>
 </li>
@@ -274,8 +277,8 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#some-projects" id="toc-some-projects" class="nav-link" data-scroll-target="#some-projects">Some projects</a></li>
+  <li><a href="#some-projects" id="toc-some-projects" class="nav-link active" data-scroll-target="#some-projects">Some projects</a></li>
+  <li><a href="#other-ideas" id="toc-other-ideas" class="nav-link" data-scroll-target="#other-ideas">Other ideas</a></li>
   </ul>
 </nav>
     </div>
@@ -285,20 +288,6 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Tackle various questions like:</p>
-<ol type="1">
-<li>How crucial is toss in winning a match? Does this depend on particular aspects of the match like day vs night, venue etc.</li>
-<li>Are umpires biased as revealed by DRS data?</li>
-<li>What opener strategies exist and how do they impact match outcomes?</li>
-<li>What finisher strategies exist and how do they impact match outcomes?</li>
-<li>What is the impact-per-dollar of different players? Who are the players that have had more impact-per-dollar than their peers in a similar price class?</li>
-<li>How can one extract the shot played from ball-by-ball commentary?</li>
-<li>How good is ESPNCricinfo’s score prediction and win probability?</li>
-<li>Who are the players that contributed more to their teams increases in win probability?</li>
-</ol>
-</section>
 <section id="some-projects" class="level2">
 <h2 class="anchored" data-anchor-id="some-projects">Some projects</h2>
 <p><br></p>
@@ -326,14 +315,22 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+<section id="how-have-different-ipl-players-contributed-to-their-teams-winning-chances" class="level4 g-col-md-8 g-col-12">
+<h4 class="anchored" data-anchor-id="how-have-different-ipl-players-contributed-to-their-teams-winning-chances"><strong>How have different IPL players contributed to their team’s winning chances?</strong></h4>
+<p><em>Dissecting player impacts on the match outcomes by using the win probability index published by ESPNCricinfo.</em><br>
+<a href="../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html">Read more</a></p>
+</section>
+<div class="g-col-md-4 g-col-12 text-center">
+<div class="border">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html"><img src="win_probability_ipl/thumbnail.png" class="img-fluid figure-img" data-padding-top="10px"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 <hr>
-<section id="what-does-umpires-call-tell-us-about-umpire-bias" class="level4">
-<h4 class="anchored" data-anchor-id="what-does-umpires-call-tell-us-about-umpire-bias"><strong>What does “Umpire’s Call” tell us about umpire bias?</strong></h4>
-<p><em>Spend time or hit out? How have different strategies affected teams’ winning chances?</em></p>
-<p><em>Coming soon</em></p>
-<hr>
-</section>
 <section id="predicting-shot-played-by-batter-from-text-commentary" class="level4">
 <h4 class="anchored" data-anchor-id="predicting-shot-played-by-batter-from-text-commentary"><strong>Predicting shot played by batter from text commentary</strong></h4>
 <p><em>Train a deep network to predict shot played by batters from text commentary and wagon wheel.</em></p>
@@ -344,9 +341,27 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <h4 class="anchored" data-anchor-id="quantifying-context-aware-extra-runs-scored-by-batters-in-the-ipl"><strong>Quantifying context-aware extra runs scored by batters in the IPL</strong></h4>
 <p><em>Develop a context-aware measure of extra runs scored by IPL batters and classify batters based on this metric.</em></p>
 <p><em>Coming soon</em></p>
-
-
+<hr>
 </section>
+<section id="what-does-umpires-call-tell-us-about-umpire-bias" class="level4">
+<h4 class="anchored" data-anchor-id="what-does-umpires-call-tell-us-about-umpire-bias"><strong>What does “Umpire’s Call” tell us about umpire bias?</strong></h4>
+<p><em>Spend time or hit out? How have different strategies affected teams’ winning chances?</em></p>
+<p><em>Coming soon</em></p>
+</section>
+</section>
+<section id="other-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="other-ideas">Other ideas</h2>
+<ol type="1">
+<li>How crucial is toss in winning a match? Does this depend on particular aspects of the match like day vs night, venue etc.</li>
+<li>Are umpires biased as revealed by DRS data?</li>
+<li>What opener strategies exist and how do they impact match outcomes?</li>
+<li>What finisher strategies exist and how do they impact match outcomes?</li>
+<li>What is the impact-per-dollar of different players in the IPL and other leagues around the world? Who are the players that have had more impact-per-dollar than their peers in a similar price class?</li>
+<li>How good is ESPNCricinfo’s score prediction and win probability?</li>
+</ol>
+<p>If you have more ideas that you want to see explored, or if you are interested in discussing/collaborating with me, please feel free to <a href="mailto:roshanprizak@gmail.com">reach out</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
