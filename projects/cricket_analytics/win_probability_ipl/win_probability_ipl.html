@@ -305,6 +305,7 @@ gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
 <li>How does the batters’ and bowlers’ contribution change with match scenarios - over number, ball number, wickets fell, bowler type, setting vs chasing, wagon zone?</li>
 <li>What does a typical innings look like for each batter?</li>
 </ol>
+<p>But before that, a short note about ESPNCricinfo’s win probability index, or any other win probability index for that matter. First, this is computed from some model that is presumably trained on a lot of cricket data, and should take match conditions, pressure, context and such things into account. Second, one can think of the underlying model as a super smart cricket pundit who knows their stuff. Having said that, there would be many instances where individual people will differ in opinion from what the model suggests. Third, my guess is that as a match progresses, the “accuracy” of the model (supposing there is a super model that knows the <em>True</em> win probability every ball) on average increases. It is with all these assumptions, caveats and understanding that we’ll use this win probability index to understand the contributions of batters and bowlers in the IPL.</p>
 </section>
 <section id="batters-contribution-per-match" class="level2">
 <h2 class="anchored" data-anchor-id="batters-contribution-per-match">Batters’ contribution per match</h2>
@@ -651,7 +652,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":true});</script>
 
 
 
