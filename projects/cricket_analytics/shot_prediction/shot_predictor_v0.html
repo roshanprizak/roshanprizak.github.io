@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Train machine learning models to predict shot played by batters from text commentary.">
+
+<title>Roshan Prizak - Predicting shot played from text commentary</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1TYCEPVLW0"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1TYCEPVLW0', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title"><strong>Roshan</strong> Prizak</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/roshanprizak"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.instagram.com/roshanprizak/"><i class="bi bi-instagram" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/roshan-prizak-05a185254/"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../projects.html" aria-current="page">
+ <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/cricket_analytics/cricket_analytics.html">
+ <span class="menu-text">Cricket</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/the_india_project/the_india_project.html">
+ <span class="menu-text">The India Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/the_vienna_project/the_vienna_project.html">
+ <span class="menu-text">The Vienna Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/health/health.html">
+ <span class="menu-text">Health</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Predicting shot played from text commentary</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">Predicting shot played from text commentary</h1>
+                  <div>
+        <div class="description">
+          Train machine learning models to predict shot played by batters from text commentary.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Data science</div>
+                <div class="quarto-category">Cricket</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects.html" class="sidebar-item-text sidebar-link">Projects Overview</a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../projects/health/health.html" class="sidebar-item-text sidebar-link">Health</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/health/wha_resolutions/analyze_keywords.html" class="sidebar-item-text sidebar-link">WHA resolutions</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../projects/the_vienna_project/the_vienna_project.html" class="sidebar-item-text sidebar-link">The Vienna Project</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/the_vienna_project/closest_public_transport/closest_public_transport.html" class="sidebar-item-text sidebar-link">Public transport access</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../projects/the_india_project/the_india_project.html" class="sidebar-item-text sidebar-link">The India Project</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/the_india_project/car_prices_india/car_prices_india.html" class="sidebar-item-text sidebar-link">Cars &amp; airbags</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/the_india_project/telugu_movies/telugu_movies.html" class="sidebar-item-text sidebar-link">Telugu Movies</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/the_india_project/hindi_movies/hindi_movies.html" class="sidebar-item-text sidebar-link">Hindi Movies</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../projects/cricket_analytics/cricket_analytics.html" class="sidebar-item-text sidebar-link">Cricket Analytics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/cricket_analytics/win_probability_ipl/win_probability_ipl.html" class="sidebar-item-text sidebar-link">Player impact analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/cricket_analytics/shot_prediction/shot_predictor_v0.html" class="sidebar-item-text sidebar-link active">Shot prediction from commentary</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/cricket_analytics/ipl_batters_strategies/ipl_batters_strategies.html" class="sidebar-item-text sidebar-link">IPL batter strategies</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#a-few-examples" id="toc-a-few-examples" class="nav-link" data-scroll-target="#a-few-examples">A few examples</a></li>
+  <li><a href="#most-correlated-words-and-phrases-for-each-shot-type" id="toc-most-correlated-words-and-phrases-for-each-shot-type" class="nav-link" data-scroll-target="#most-correlated-words-and-phrases-for-each-shot-type">Most correlated words and phrases for each shot type</a></li>
+  <li><a href="#evaluation-of-multiple-models" id="toc-evaluation-of-multiple-models" class="nav-link" data-scroll-target="#evaluation-of-multiple-models">Evaluation of multiple models</a></li>
+  <li><a href="#hyperparameter-tuning" id="toc-hyperparameter-tuning" class="nav-link" data-scroll-target="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+  <li><a href="#linear-svc" id="toc-linear-svc" class="nav-link" data-scroll-target="#linear-svc">Linear SVC</a></li>
+  <li><a href="#confusion-matrix" id="toc-confusion-matrix" class="nav-link" data-scroll-target="#confusion-matrix">Confusion matrix</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>While there is a lot of ball-by-ball information like batter, bowler, runs scored, wicket fell, text commentary etc., for all forms of major cricket matches since the mid 2000s, more micro-level information is lacking. For example, an important feature of each ball is the <strong>shot played</strong> by the batter. Knowing this would allow analysis of performances, risks (runs vs wicket) and other quantifiers categorized by the shot type. We’d also understand trends in shots played over the years, over different players, in different phases of a match and in different match types.</p>
+<p>While text commentary is largely available, shot played is already available only for a subset of matches - international matches played in India in the recent years, and the recent IPL seasons. In this project, I attempted to train models that can learn and predict shot played from the associated text commentary for each ball.</p>
+</section>
+<section id="a-few-examples" class="level2">
+<h2 class="anchored" data-anchor-id="a-few-examples">A few examples</h2>
+<p>Here are a few examples from the 2022 IPL final between Gujarat Titans and Rajasthan Royals from ESPNCricinfo’s commentary and shot played from IPLT20.com. As you can see, some balls have the shot played explicitly mentioned in the commentary, while some don’t. Some balls have a not-entirely-accurate shot tagged, for example <em>shorter and into the ribs, Buttler drags a hook behind square on the leg side for one</em> has the shot tagged as <em>Pull Shot</em> while <em>Hook Shot</em> would have been more appropriate. So, we go into this project with the understanding that such inaccuracies exist, and any predictions coming out of a model trained on this dataset would carry with it these inaccuracies and caveats.</p>
+<div class="cell" data-execution_count="22">
+<div class="cell-output cell-output-stdout">
+<pre><code>143.1ks, much fuller and snaking in to hit the pad from round the stumps, the sharp angle and movement was dragging it down the leg side. The result is a leg-bye for RR
+Shot: On Drive
+---
+140.8ks, nice and full, seaming in to attack the stumps, whisked away to the right of mid-on
+Shot: On Drive
+---
+good length and slanting in from round the stumps, but does not threaten off stump. So, Jaiswal ignores it in the channel
+Shot: Left Alone
+---
+chipped away in the air...but lands in front of square leg or rather short midwicket where Rashid collects it on the bounce
+Shot: Flick
+---
+dug in short an slanting back in to cramp the batter for room, Jaiswal somehow keeps it out
+Shot: Cut Shot
+---
+full and pushed across off, left alone by Buttler
+Shot: Left Alone
+---
+back of a length and skids back into middle and leg, jammed to the leg side off the inner half
+Shot: Defence
+---
+short and wide of off, Buttler latches onto the width and scythes a cut between point and cover for four. Fetch that!
+Shot: Cut Shot
+---
+better from Dayal. Good length and much closer to off stump, draws Buttler into a front-foot defence to short cover
+Shot: Defence
+---
+shorter and into the ribs, Buttler drags a hook behind square on the leg side for one
+Shot: Pull Shot
+---
+short and veering down the leg side, Jaiswal misses out on the pull and wears it on his thigh pad
+Shot: Pull Shot</code></pre>
+</div>
+</div>
+<p>Here’s the distribution of shot types across all the balls available for training. <strong>Defence</strong>, <strong>On Drive</strong>, <strong>Coverdrive</strong> etc. are the most frequent while <strong>Inside Out</strong>, <strong>Paddle Sweep</strong>, <strong>Hook Shot</strong>, <strong>Reverse Sweep</strong> and <strong>Chip Shot</strong> are the rarest.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><img src="shot_predictor_v0_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="most-correlated-words-and-phrases-for-each-shot-type" class="level2">
+<h2 class="anchored" data-anchor-id="most-correlated-words-and-phrases-for-each-shot-type">Most correlated words and phrases for each shot type</h2>
+<p>To get to understand the dataset a little more, I first looked at the top 10 words and phrases (monograms, bigrams and trigrams) for each shot type by computing the chi-squared statistic between the text commentary (after TF-IDF vectorization) and the shot played.</p>
+<p>This looks fairly promising. For each shot type, the top most correlated words and phrases are indeed very relevant to the shot type.</p>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+1. Defence
+----------
+
+Unigrams: around, long, deep, foot, blocked, blocks, forward, defend, defends, defended
+Bigrams: stumps defended, and blocks, forward and, front foot, he defends, defended to, defended back, and defends, to defend, off defended
+Trigrams: forward and blocks, defended on the, on the front, back to him, forward and defends, outside off defended, the stumps defended, defended back to, around off defended, the front foot
+
+2. On Drive
+-----------
+
+Unigrams: point, flicks, cover, clipped, whipped, whips, flicked, on, midwicket, long
+Bigrams: flicked to, full on, through midwicket, midwicket for, wide long, deep midwicket, mid on, to long, on for, long on
+Trigrams: of long on, to mid on, to deep midwicket, over long on, towards long on, down to long, wide long on, on for one, long on for, to long on
+
+3. Coverdrive
+-------------
+
+Unigrams: punches, driven, leg, slapped, drives, covers, drive, sweeper, extra, cover
+Bigrams: cover sweeper, through cover, to sweeper, the cover, through covers, sweeper cover, to extra, cover for, deep cover, extra cover
+Trigrams: straight to extra, the cover sweeper, over extra cover, deep extra cover, cover for one, to sweeper cover, deep cover for, extra cover for, to extra cover, to deep cover
+
+4. Pull Shot
+------------
+
+Unigrams: deep, hook, bouncer, square, midwicket, swivels, short, pulls, pulled, pull
+Bigrams: pull to, short on, pull and, pull but, pulled to, and pulls, short ball, pulls it, to pull, the pull
+Trigrams: to pull and, short ball on, on the pull, deep square leg, short on the, the pull but, back and pulls, for the pull, pulled to deep, and pulls it
+
+5. Off Drive
+------------
+
+Unigrams: midwicket, deep, leg, punched, drive, drives, off, driven, long, mid
+Bigrams: towards mid, of mid, towards long, off driven, driven to, to mid, to long, off for, mid off, long off
+Trigrams: towards mid off, wide long off, of mid off, driven to long, mid off for, towards long off, to mid off, off for one, long off for, to long off
+
+6. Cut Shot
+-----------
+
+Unigrams: sweeper, slashes, slash, width, backward, chopped, chops, point, cuts, cut
+Bigrams: short and, deep point, cut and, and cuts, cut away, cut but, backward point, cuts it, to cut, the cut
+Trigrams: outside off cut, back and cuts, on the cut, goes to cut, the cut but, to cut and, to deep point, for the cut, and cuts it, short and wide
+
+7. Flick
+--------
+
+Unigrams: fine, whipped, flick, clips, flicks, clipped, leg, flicked, pads, square
+Bigrams: pads clipped, flicked to, clipped away, pads flicked, backward square, through square, leg for, deep square, the pads, square leg
+Trigrams: the pads flicked, leg for one, deep backward square, backward square leg, flicked to deep, through square leg, deep square leg, to deep square, square leg for, on the pads
+
+8. Left Alone
+-------------
+
+Unigrams: sways, channel, shoulders, called, lets, bouncer, ducks, leaves, left, alone
+Bigrams: stump left, the channel, it alone, channel left, leaves it, alone outside, lets it, it go, off left, left alone
+Trigrams: in the channel, length ball in, leaves it alone, left alone outside, the channel left, channel left alone, alone outside off, lets it go, outside off left, off left alone
+
+9. Leg Glance
+-------------
+
+Unigrams: glanced, strays, glances, tucked, down, side, pads, flick, fine, leg
+Bigrams: down the, the pads, to fine, short fine, the flick, wide down, fine leg, leg side, the leg, down leg
+Trigrams: on the pads, off the hip, but down the, short fine leg, misses the flick, to fine leg, to short fine, wide down the, the leg side, down the leg
+
+10. Straight Drive
+------------------
+
+Unigrams: smacks, arrow, striker, slot, non, ground, straight, sightscreen, head, bowler
+Bigrams: driven back, back past, his head, over his, the sightscreen, straight back, head for, back over, the bowler, bowler head
+Trigrams: into the sightscreen, head for six, past the bowler, back over the, bowler head for, down the ground, over his head, back over his, the bowler head, over the bowler
+
+11. Glide
+---------
+
+Unigrams: steer, steers, guide, guides, guided, face, opens, steered, man, third
+Bigrams: off steered, the face, runs this, third for, runs it, opens the, man for, to third, deep third, third man
+Trigrams: third for one, outside off steered, runs it down, deep third for, opens the face, down to third, man for one, third man for, to third man, to deep third
+
+12. Sweep Shot
+--------------
+
+Unigrams: leg, sweeping, slog, paddle, square, knee, fine, swept, sweeps, sweep
+Bigrams: short fine, swept away, sweep but, sweep and, swept to, sweeps it, and sweeps, sweeps this, to sweep, the sweep
+Trigrams: on one knee, to sweep but, looks to sweep, goes to sweep, the sweep but, and sweeps it, on the sweep, to sweep and, swept to deep, for the sweep
+
+13. Square Drive
+----------------
+
+Unigrams: punched, deep, punches, width, face, opens, backward, sweeper, steers, point
+Bigrams: the point, driven square, point to, point and, behind point, through point, square drive, point for, backward point, deep point
+Trigrams: outside off square, off sliced away, point sweeper for, square drive to, off he opens, deep point for, point for one, deep backward point, through point for, to deep point
+
+14. Slog Sweep
+--------------
+
+Unigrams: fetches, perishes, slogs, midwicket, pastes, knee, swept, sweeps, sweep, slog
+Bigrams: and slog, knee and, with slog, one knee, sweep over, slog swept, another slog, slog sweeps, the slog, slog sweep
+Trigrams: goes to slog, to slog sweep, sweep over midwicket, slog sweep but, slog sweep over, another slog sweep, with slog sweep, slog sweep and, slog sweeps it, the slog sweep
+
+15. Reverse Sweep
+-----------------
+
+Unigrams: switched, swept, sweeps, stance, switches, premeditates, reverses, switch, sweep, reverse
+Bigrams: reverse and, off reverse, for reverse, switch hit, to reverse, another reverse, reverse swept, reverse sweeps, the reverse, reverse sweep
+Trigrams: tries the reverse, reverse sweep this, reverse sweep to, to reverse sweep, another reverse sweep, out the reverse, reverse sweep but, for the reverse, reverse sweep and, the reverse sweep
+
+16. Slog Shot
+-------------
+
+Unigrams: toss, backpedaling, context, juice, swings, cannons, hoick, slog, win, heave
+Bigrams: slog this, tewatia goes, is dragged, row over, high full, while running, go leg, swings at, another wild, has swing
+Trigrams: heaved to deep, gets that off, to that good, dragging it to, high full toss, to slog this, has swing but, knee to slog, to go leg, half to deep
+
+17. Scoop
+---------
+
+Unigrams: paddle, fine, across, cheeky, shuffles, laps, scooped, ramp, scoops, scoop
+Bigrams: laps it, scoop over, scoop but, the ramp, over fine, the scoop, scoops it, scoop this, and scoops, to scoop
+Trigrams: scoops it over, trying to scoop, across to scoop, to scoop but, across and scoops, over short fine, and scoops it, scoop this over, over fine leg, to scoop this
+
+18. Late Cut
+------------
+
+Unigrams: dabbing, man, chop, face, opens, deft, dabs, cut, late, third
+Bigrams: quicker outside, flat quick, the late, dabs it, deft touch, the face, late cuts, to late, late cut, short third
+Trigrams: for the late, fine of short, of short third, looks to late, short third man, towards short third, the late cut, short third for, late cuts it, to short third
+
+19. Upper Cut
+-------------
+
+Unigrams: instinctively, man, arches, ramped, bouncer, uppercuts, ramps, upper, uppercut, ramp
+Bigrams: ramp but, and upper, to upper, ramps it, the upper, to uppercut, uppercut this, upper cut, to ramp, ramp it
+Trigrams: to upper cut, for the upper, ramp it away, tries to upper, looks to ramp, uppercut this over, to uppercut this, ramp it over, the upper cut, to ramp it
+
+20. Sliced Over Point
+---------------------
+
+Unigrams: sliced, effect, yorker, throws, slicing, uncontrolled, slices, backspins, scythes, slice
+Bigrams: and backspins, running from, slices drive, low wide, wide yorker, slice it, from vyshak, over backward, over point, to slice
+Trigrams: sees the batter, slice it over, ball and carves, low wide full, scythes it over, wide yorker but, full and wide, to slice it, over point for, over backward point
+
+21. Inside Out
+--------------
+
+Unigrams: fashioned, inside, ample, building, extra, makes, backs, belt, room, manufactures
+Bigrams: makes room, room early, made ample, chip over, swinging room, goes inside, over extra, manufactures swinging, inside out, out over
+Trigrams: it over extra, out over the, out over cover, but clears the, goes inside out, room and looks, over extra cover, out over extra, manufactures swinging room, inside out over
+
+22. Paddle Sweep
+----------------
+
+Unigrams: laps, type, conventional, sweeps, paddled, sweep, delicate, fine, paddle, paddles
+Bigrams: bumrah at, to paddle, sweeps again, sweeps from, and paddle, paddle sweeps, the paddle, and paddles, paddle sweep, paddles it
+Trigrams: for the paddle, leg side buttler, across and paddles, paddle it fine, paddle sweep but, this to fine, and paddle sweeps, paddle sweeps this, and paddles it, the paddle sweep
+
+23. Hook Shot
+-------------
+
+Unigrams: hooks, wayyyy, hovering, smoothly, turtles, hooked, adventurous, aplomb, help, srk
+Bigrams: third tier, with aplomb, head it, to help, help it, and swivels, to hook, around head, and help, some shot
+Trigrams: fine leg it, the third tier, at the head, short ball another, the attempted pull, shortish ball around, dribbles away to, boundary for six, bouncer on the, it along with
+
+24. Reverse Scoop
+-----------------
+
+Unigrams: grille, yeah, ramped, rvdd, dink, switches, funky, scoop, reverse, ramp
+Bigrams: to reverse, the reverse, scoop it, ramp this, beaten he, reverse scoop, ramp but, reverse pull, and reverse, reverse ramp
+Trigrams: for the reverse, short third but, over third man, scoop it over, man but misses, is beaten he, to reverse scoop, tries the reverse, goes to reverse, the reverse ramp
+
+25. Chip Shot
+-------------
+
+Unigrams: chipping, innocuous, 100kph, 99kph, uppishly, chips, pocket, entirely, hobbles, chipped
+Bigrams: walking single, half step, hit uppishly, chipped uppishly, takes half, off flicks, timing that, lofted to, not entirely, chipped over
+Trigrams: him over mid, air but he, leading edge on, for walking single, legcutter on length, and dug out, flicks it uppishly, go through with, away to make, lofted to long</code></pre>
+</div>
+</div>
+</section>
+<section id="evaluation-of-multiple-models" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-of-multiple-models">Evaluation of multiple models</h2>
+<p>To make some initial inroads into the problem, I evaluated three models on TF-IDF vectorized text commentary with monograms, bigrams and trigrams - Random Forest classifier, Linear SVC and Multinomial Naive Bayes - using a 5-fold cross validation. I chose these three because they can be run fairly quickly to get first impressions. Out of these three, Linear SVC does the best with around 70% accuracy.</p>
+<p>I also ran an XGBoost method with a validation set and early stopping. This resulted in an accuracy around 69%, which is very similar to Linear SVC. However, XGBoost takes a longer time to train, so I chose to go ahead with Linear SVC and perform hyperparameter tuning.</p>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<p><img src="shot_predictor_v0_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="hyperparameter-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameter-tuning">Hyperparameter tuning</h2>
+<p>I chose to go ahead with Linear SVC and performed hyperparameter tuning using GridSearchCV to find the best parameters.</p>
+<div class="cell" data-execution_count="46">
+<div class="cell-output cell-output-stdout">
+<pre><code>Best Hyperparameters: {'vectorizer__max_features': None, 'vectorizer__min_df': 1, 'vectorizer__ngram_range': (1, 3)}
+Best CV Score: 0.7095704763787206
+Test Accuracy: 0.7173983389062668</code></pre>
+</div>
+</div>
+<p>The best parameter set is to consider all document frequencies and take monograms, bigrams and trigrams together as the features. However, the gains with not keeping an upper limit on the vocabulary size is very little, so to keep the computation from taking up too much RAM, I chose max_df as 10000.</p>
+</section>
+<section id="linear-svc" class="level2">
+<h2 class="anchored" data-anchor-id="linear-svc">Linear SVC</h2>
+<p>Tthe precision, recall values shot types shows that the model performs pretty well on shots that have a lot of support, like <strong>Defence</strong>, <strong>On Drive</strong> and <strong>Pull Shot</strong>. However, some shots have a zero precision/recall - <strong>Chip Shot</strong> and <strong>Hook Shot</strong>, and some have very low precision/recall values - <strong>Late Cut</strong>, <strong>Slog Shot</strong> and <strong>Sliced Over Point</strong>.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.7026210764750297
+Precision: 0.5591104200516839
+Recall: 0.44190912927180775</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>f1-score</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Chip Shot</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Coverdrive</th>
+      <td>0.66</td>
+      <td>0.70</td>
+      <td>0.68</td>
+      <td>951</td>
+    </tr>
+    <tr>
+      <th>Cut Shot</th>
+      <td>0.59</td>
+      <td>0.63</td>
+      <td>0.61</td>
+      <td>542</td>
+    </tr>
+    <tr>
+      <th>Defence</th>
+      <td>0.80</td>
+      <td>0.89</td>
+      <td>0.84</td>
+      <td>2109</td>
+    </tr>
+    <tr>
+      <th>Flick</th>
+      <td>0.51</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>462</td>
+    </tr>
+    <tr>
+      <th>Glide</th>
+      <td>0.57</td>
+      <td>0.56</td>
+      <td>0.57</td>
+      <td>239</td>
+    </tr>
+    <tr>
+      <th>Hook Shot</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>Inside Out</th>
+      <td>1.00</td>
+      <td>0.05</td>
+      <td>0.09</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>Late Cut</th>
+      <td>0.17</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>Left Alone</th>
+      <td>0.83</td>
+      <td>0.86</td>
+      <td>0.84</td>
+      <td>440</td>
+    </tr>
+    <tr>
+      <th>Leg Glance</th>
+      <td>0.48</td>
+      <td>0.50</td>
+      <td>0.49</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <th>Off Drive</th>
+      <td>0.70</td>
+      <td>0.66</td>
+      <td>0.68</td>
+      <td>817</td>
+    </tr>
+    <tr>
+      <th>On Drive</th>
+      <td>0.71</td>
+      <td>0.75</td>
+      <td>0.73</td>
+      <td>1258</td>
+    </tr>
+    <tr>
+      <th>Paddle Sweep</th>
+      <td>0.44</td>
+      <td>0.19</td>
+      <td>0.27</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>Pull Shot</th>
+      <td>0.79</td>
+      <td>0.82</td>
+      <td>0.80</td>
+      <td>933</td>
+    </tr>
+    <tr>
+      <th>Reverse Scoop</th>
+      <td>1.00</td>
+      <td>0.11</td>
+      <td>0.20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Reverse Sweep</th>
+      <td>0.89</td>
+      <td>0.94</td>
+      <td>0.91</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Scoop</th>
+      <td>0.76</td>
+      <td>0.68</td>
+      <td>0.72</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>Sliced Over Point</th>
+      <td>0.18</td>
+      <td>0.07</td>
+      <td>0.10</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>Slog Shot</th>
+      <td>0.12</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>Slog Sweep</th>
+      <td>0.48</td>
+      <td>0.35</td>
+      <td>0.40</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>Square Drive</th>
+      <td>0.44</td>
+      <td>0.19</td>
+      <td>0.26</td>
+      <td>166</td>
+    </tr>
+    <tr>
+      <th>Straight Drive</th>
+      <td>0.56</td>
+      <td>0.43</td>
+      <td>0.49</td>
+      <td>279</td>
+    </tr>
+    <tr>
+      <th>Sweep Shot</th>
+      <td>0.66</td>
+      <td>0.67</td>
+      <td>0.67</td>
+      <td>195</td>
+    </tr>
+    <tr>
+      <th>Upper Cut</th>
+      <td>0.64</td>
+      <td>0.44</td>
+      <td>0.52</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>accuracy</th>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0.70</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>macro avg</th>
+      <td>0.56</td>
+      <td>0.44</td>
+      <td>0.46</td>
+      <td>9271</td>
+    </tr>
+    <tr>
+      <th>weighted avg</th>
+      <td>0.69</td>
+      <td>0.70</td>
+      <td>0.69</td>
+      <td>9271</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="confusion-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="confusion-matrix">Confusion matrix</h2>
+<p>The confusion matrix reveals which shots get categorized as which shots when they are incorrectly identified. We see that <strong>Chip Shot</strong> gets classified as <strong>Off Drive</strong>, which isn’t a bad prediction per se. Anyway, it has such a low support that not identifying it correctly is insignificant. <strong>Coverdrive</strong> is identified correctly 70% of the time, but otherwise its identified as <strong>Cut Shot</strong> (not bad), <strong>Off Drive</strong> (not bad), or as <strong>Defence</strong> (not so good). A couple of other examples are <strong>Leg Glance</strong> getting identified as <strong>Flick</strong> (totally fine) 25% of the times, and <strong>Square Drive</strong> getting identified as <strong>Coverdrive</strong> (not bad) and <strong>Cut Shot</strong> (not bad) 56% of the time.</p>
+<p>This suggests that even when the shots aren’t identified exactly, the other <em>incorrect</em> guesses are often okay. A lenient accuracy score would score higher than 70%.</p>
+<div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<p><img src="shot_predictor_v0_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This table lists all the shots in order of their frequency in the dataset along with their accuracy values and the second best guesses. In many cases, the second best guess is quite acceptable.</p>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="17">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Test</th>
+      <th>Train</th>
+      <th>Correct %</th>
+      <th>Best Guess</th>
+      <th>Second Best Guess</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Defence</th>
+      <td>2109</td>
+      <td>8436</td>
+      <td>89.0</td>
+      <td>Defence</td>
+      <td>On Drive</td>
+    </tr>
+    <tr>
+      <th>On Drive</th>
+      <td>1258</td>
+      <td>5029</td>
+      <td>75.4</td>
+      <td>On Drive</td>
+      <td>Defence</td>
+    </tr>
+    <tr>
+      <th>Coverdrive</th>
+      <td>951</td>
+      <td>3806</td>
+      <td>70.2</td>
+      <td>Coverdrive</td>
+      <td>Cut Shot</td>
+    </tr>
+    <tr>
+      <th>Pull Shot</th>
+      <td>933</td>
+      <td>3732</td>
+      <td>81.8</td>
+      <td>Pull Shot</td>
+      <td>On Drive</td>
+    </tr>
+    <tr>
+      <th>Off Drive</th>
+      <td>817</td>
+      <td>3268</td>
+      <td>65.6</td>
+      <td>Off Drive</td>
+      <td>Coverdrive</td>
+    </tr>
+    <tr>
+      <th>Cut Shot</th>
+      <td>542</td>
+      <td>2168</td>
+      <td>63.1</td>
+      <td>Cut Shot</td>
+      <td>Coverdrive</td>
+    </tr>
+    <tr>
+      <th>Flick</th>
+      <td>462</td>
+      <td>1847</td>
+      <td>49.8</td>
+      <td>Flick</td>
+      <td>Leg Glance</td>
+    </tr>
+    <tr>
+      <th>Left Alone</th>
+      <td>440</td>
+      <td>1761</td>
+      <td>85.7</td>
+      <td>Left Alone</td>
+      <td>Leg Glance</td>
+    </tr>
+    <tr>
+      <th>Leg Glance</th>
+      <td>315</td>
+      <td>1258</td>
+      <td>49.5</td>
+      <td>Leg Glance</td>
+      <td>Flick</td>
+    </tr>
+    <tr>
+      <th>Straight Drive</th>
+      <td>279</td>
+      <td>1116</td>
+      <td>42.7</td>
+      <td>Straight Drive</td>
+      <td>Off Drive</td>
+    </tr>
+    <tr>
+      <th>Glide</th>
+      <td>239</td>
+      <td>955</td>
+      <td>56.5</td>
+      <td>Glide</td>
+      <td>Defence</td>
+    </tr>
+    <tr>
+      <th>Sweep Shot</th>
+      <td>195</td>
+      <td>781</td>
+      <td>67.2</td>
+      <td>Sweep Shot</td>
+      <td>Slog Sweep</td>
+    </tr>
+    <tr>
+      <th>Square Drive</th>
+      <td>166</td>
+      <td>662</td>
+      <td>18.7</td>
+      <td>Coverdrive</td>
+      <td>Cut Shot</td>
+    </tr>
+    <tr>
+      <th>Slog Sweep</th>
+      <td>104</td>
+      <td>416</td>
+      <td>34.6</td>
+      <td>Slog Sweep</td>
+      <td>On Drive</td>
+    </tr>
+    <tr>
+      <th>Reverse Sweep</th>
+      <td>90</td>
+      <td>362</td>
+      <td>94.4</td>
+      <td>Reverse Sweep</td>
+      <td>Defence</td>
+    </tr>
+    <tr>
+      <th>Slog Shot</th>
+      <td>89</td>
+      <td>358</td>
+      <td>2.2</td>
+      <td>On Drive</td>
+      <td>Pull Shot</td>
+    </tr>
+    <tr>
+      <th>Scoop</th>
+      <td>65</td>
+      <td>262</td>
+      <td>67.7</td>
+      <td>Scoop</td>
+      <td>Pull Shot</td>
+    </tr>
+    <tr>
+      <th>Late Cut</th>
+      <td>58</td>
+      <td>232</td>
+      <td>5.2</td>
+      <td>Cut Shot</td>
+      <td>Defence</td>
+    </tr>
+    <tr>
+      <th>Upper Cut</th>
+      <td>48</td>
+      <td>190</td>
+      <td>43.8</td>
+      <td>Upper Cut</td>
+      <td>Cut Shot</td>
+    </tr>
+    <tr>
+      <th>Sliced Over Point</th>
+      <td>44</td>
+      <td>178</td>
+      <td>6.8</td>
+      <td>Coverdrive</td>
+      <td>Cut Shot</td>
+    </tr>
+    <tr>
+      <th>Inside Out</th>
+      <td>21</td>
+      <td>86</td>
+      <td>4.8</td>
+      <td>Coverdrive</td>
+      <td>Inside Out</td>
+    </tr>
+    <tr>
+      <th>Paddle Sweep</th>
+      <td>21</td>
+      <td>84</td>
+      <td>19.0</td>
+      <td>Sweep Shot</td>
+      <td>Paddle Sweep</td>
+    </tr>
+    <tr>
+      <th>Hook Shot</th>
+      <td>10</td>
+      <td>40</td>
+      <td>0.0</td>
+      <td>Pull Shot</td>
+      <td>Flick</td>
+    </tr>
+    <tr>
+      <th>Reverse Scoop</th>
+      <td>9</td>
+      <td>34</td>
+      <td>11.1</td>
+      <td>Reverse Sweep</td>
+      <td>Reverse Scoop</td>
+    </tr>
+    <tr>
+      <th>Chip Shot</th>
+      <td>6</td>
+      <td>22</td>
+      <td>0.0</td>
+      <td>Off Drive</td>
+      <td>Flick</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>Armed with this model, we can now take text commentary for all matches from ESPNCricinfo and predict the shot types. Of course, we have to make sure that the commentary for each ball is not <em>too short</em>, in which case a random shot might be predicted because of incomplete information. Perhaps an idea would be to augment the training set with such examples and have a dummy shot type, so that such data in unseen datasets can be identified correctly.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2023 Roshan Prizak. Except where otherwise noted, all text and images licensed CC-BY-NC 4.0.</div>   
+  </div>
+</footer>
+
+
+
+</body></html>
